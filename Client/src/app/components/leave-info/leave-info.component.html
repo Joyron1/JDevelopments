@@ -1,0 +1,38 @@
+<div class="row" id="leaveInfoForm">
+    <div class="col-xl-12 col-md-12 col-sm-12 leaveInfoTxt">
+        <div>
+            <p>בואו לקדם ולהנגיש את העסק שלכם לעוד אלפי לקוחות!</p>
+        </div>
+        <div>
+            <p>השאירו פרטים לייעוץ ראשוני וקבלת הצעת מחיר.</p>
+        </div>
+    </div>
+
+    <div class="col-xl-4 col-md-4 col-sm-12">
+        <div class="form-group ">
+            <input type="text" class="form-control" id="fullName" placeholder="שם מלא*" [(ngModel)]="obj.fullName">
+        </div>
+    </div>
+
+    <div class="col-xl-4 col-md-4 col-sm-12">
+        <div class="form-group ">
+            <input type="tel" class="form-control" id="phone" placeholder='מספר נייד*' [(ngModel)]="obj.phone">
+        </div>
+    </div>
+
+    <div class="col-xl-4 col-md-4 col-sm-12">
+        <div class="form-group ">
+            <input type="email" class="form-control" id="email" placeholder="כתובת אימייל*" [(ngModel)]="obj.email">
+        </div>
+    </div>
+
+    <div class="col-12 text-light" style="text-align: center; direction: rtl;">
+        <p>{{fieldsMsg}}</p>
+        <p>{{thanksMsg}}</p>
+    </div>
+
+    <div class="col-xl-12 col-md-12 col-sm-12" style="text-align:center;">
+        <button type="button" class="btn btn-outline-warning" style="width:100px;" (click)="onSubmit()">שלח/י</button>
+    </div>
+
+</div>

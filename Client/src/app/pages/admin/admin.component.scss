@@ -1,0 +1,122 @@
+
+
+.adminPannel{
+    font-family: 'Assistant', sans-serif;
+    min-height: 100vh;
+    .sidebar{
+        background-color: rgb(47, 47, 65);
+        border-right: 1px solid rgba(255,255,255,0.397);
+        text-align: center;
+        width: 100%;
+        .sidebarHeader{
+            border-bottom: 1px solid rgba(255,255,255,0.397);
+            font-size: 20px;
+            header{
+                margin:20px 0px 20px 0px;
+            }
+        }
+        .sidebarLink{
+            text-align: center;
+            margin: 40px 0px 40px 0px;
+            span{
+                font-size: 25px;
+                opacity: 0.7;
+            }
+            span:hover{
+                transform: scale(1.1);
+                opacity:1;  
+            }
+        }
+    }
+    .informationArea{
+        background-color: rgb(32, 32, 43);
+        color: white;
+        header{
+            font-size: 70px;
+            margin:50px 0px;
+        }
+    }
+}
+
+.adminLogin{
+    .login-card{
+        display: flex; 
+        justify-content: center; 
+        color: white;
+        .form-row{
+            direction: ltr;
+            max-width: 400px; 
+            padding: 20px; 
+            position: relative; 
+            top:50%;
+            border-radius: 10px; 
+            box-shadow: 0px 2px 20px black;
+            .form-logo{
+                display: flex;
+                justify-content: center;
+                margin: 5px 0px 20px 0px;
+                img{
+                    width: 100px; height: 100px;
+                }
+            }
+            .login-btn{
+                width: 100%;
+                background-color:rgb(6, 143, 102);
+                &:hover{
+                    background-color: rgb(10, 233, 166); 
+                }
+            }
+            .register-btn{
+                width: 100%;
+                background-color:rgb(156, 156, 156);
+                color: black;
+                &:hover{
+                    background-color:rgb(221, 221, 221); 
+                }
+            }
+        }
+    }
+}
+
+
+
+
+@media (max-width:769px){
+    .adminLogin{
+        padding:20px;
+        .login-card{
+            .form-row{
+                direction: ltr;
+                max-width: 300px; 
+                padding: 20px; 
+                position: relative; 
+                top:5%;
+                border-radius: 10px; 
+                box-shadow: 0px 2px 20px black;
+                .form-logo{
+                    display: flex;
+                    justify-content: center;
+                    margin: 5px 0px 20px 0px;
+                    img{
+                        width: 50px; height: 50px;
+                    }
+                }
+                .login-btn{
+                    width: 100%;
+                    background-color:rgb(6, 143, 102);
+                    &:hover{
+                        background-color: rgb(10, 233, 166); 
+                    }
+                }
+                .register-btn{
+                    width: 100%;
+                    background-color:rgb(156, 156, 156);
+                    color: black;
+                    &:hover{
+                        background-color:rgb(221, 221, 221); 
+                    }
+                }
+            }
+        }
+    }
+}

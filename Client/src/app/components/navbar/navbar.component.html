@@ -1,0 +1,25 @@
+<nav class="navbar navbar-expand-lg bg-light navbar-light" *ngIf="boolPath !== true">
+    <a class="navbar-brand" href="#"><img src="../../../assets/images/JD_Logo.png" width="60" height="60" /></a>
+    <button class="navbar-toggler" id="nav-btn" type="button" data-toggle="collapse"
+        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="true"
+        aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" (click)="closeNav()" routerLink="/">דף הבית</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" (click)="closeNav()" routerLink="/our-services">שירותינו</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" (click)="closeNav()" routerLink="our-projects">פרויקטים</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" (click)="closeNav()" routerLink="contact-us">דברו איתנו</a>
+            </li>
+        </ul>
+    </div>
+</nav>

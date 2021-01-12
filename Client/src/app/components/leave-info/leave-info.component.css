@@ -1,0 +1,22 @@
+.leaveInfoTxt{
+    direction: rtl;
+    margin-bottom: 10px;
+    color: white;
+    font-size: 20px;
+    letter-spacing: 1px;
+    text-align: center;
+    font-family: 'Assistant', sans-serif;
+}
+.form-group input::-webkit-input-placeholder {
+    font-size: 15px;
+    text-align: right;
+    font-family: 'Assistant', sans-serif;
+}
+
+
+@media (max-width: 520px) {
+    .leaveInfoTxt{
+        /* word-spacing: 5px; */
+        font-size: 13px;
+    }
+}

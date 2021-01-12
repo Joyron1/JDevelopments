@@ -1,0 +1,37 @@
+<div>
+    <div class="row no-gutters adminLogin" *ngIf="!adminLoggedIn">
+        <div class="col-12 login-card">
+            <div class="form-row bg-dark">
+                <div class="form-logo col-12">
+                    <img src="../../../assets/images/JD_Logo.png" id="logo" />
+                </div>
+                <div class="form-group col-md-12 my-2">
+                    <input type="text" class="form-control" id="email" placeholder="E-mail Address"
+                        [(ngModel)]="obj.email">
+                </div>
+                <div class="form-group col-md-12 my-2">
+                    <input type="password" class="form-control" id="password" placeholder="Password"
+                        [(ngModel)]="obj.password">
+                </div>
+                <div class="col-12 mb-3" style="text-align: center;">
+                    <small>{{errMsg}}</small>
+                </div>
+                <div class="form-group col-md-12 my-2">
+                    <button type="submit" class="btn btn-secondary login-btn" (click)="onSubmit()">Login</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="adminLoggedIn">
+    <div class="sticky-top">
+        <app-admin-navbar></app-admin-navbar>
+    </div>
+
+    <div class="row no-gutters adminPannel">
+        <div class="col-12 informationArea" style="text-align: center;">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

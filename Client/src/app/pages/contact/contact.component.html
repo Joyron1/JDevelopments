@@ -1,0 +1,50 @@
+<div class="row no-gutters mainContact">
+
+    <div class="row container contactForm">
+        <div class="col-xl-12 col-md-12">
+            <h2> <b>דברו איתנו עוד היום!</b></h2>
+        </div>
+        <div class="col-xl-12 col-md-12 form-group my-3">
+            <input type="text" class="form-control" id="fullName" placeholder="שם מלא" [(ngModel)]="obj.fullName">
+        </div>
+
+        <div class="col-xl-6 col-md-6 form-group my-3">
+            <input type="email" class="form-control" id="email" placeholder="כתובת אימייל" [(ngModel)]="obj.email">
+        </div>
+
+        <div class="col-xl-6 col-md-6 form-group my-3">
+            <input type="tel" class="form-control" id="phone" placeholder="מספר נייד" [(ngModel)]="obj.phone">
+        </div>
+
+        <div class="col-xl-12 col-md-12 form-group my-3">
+            <label class="float-right">על איזה נושא תרצה לדבר?</label>
+            <select class="form-control" id="exampleFormControlSelect1" [(ngModel)]="obj.service">
+                <option>בניית עמוד נחיתה</option>
+                <option>בניית אתר תדמית</option>
+                <option>בניית חנות מסחר</option>
+                <option>בניית תוכנת ניהול</option>
+                <option>סתם שאלה</option>
+            </select>
+        </div>
+
+        <div class="col-xl-12 col-md-12form-group my-3">
+            <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="ההודעה שלך..." rows="3"
+                [(ngModel)]="obj.message"></textarea>
+        </div>
+
+        <div class="col-12 my-2" style="text-align: right;">
+            <b>
+                <p style="color: red;">{{fieldsMsg}}</p>
+                <p>{{thanksMsg}}</p>
+            </b>
+        </div>
+
+        <div class="col-xl-12 col-md-12">
+            <button type="button" class="btn" (click)="onSubmit()">שלח/י פרטים</button>
+        </div>
+
+    </div>
+
+
+
+</div>

@@ -1,0 +1,45 @@
+<div class="row no-gutters mainServices">
+
+    <div class="col-xl-12 col-md-12 col-sm-12 servicesHeader">
+        <p>השירותים שאנו מציעים</p>
+    </div>
+
+    <div class="col-xl-4 col-md-4 col- my-xl-5 my-md-5 my-4 serviceCard" *ngFor="let service of servicesArray">
+        <img src="{{service.img}}">
+        <h5 class="card-title"><b>{{service.title}}</b></h5>
+        <div class="container description my-3">
+            <p>{{service.description}}</p>
+        </div>
+    </div>
+
+    <div class="col-12 lngsHeader ">
+        <p>משתמשים בטכנולוגיות המתקדמות ביותר!</p>
+    </div>
+
+    <div class="container lngs my-5">
+        <div class="icons">
+            <div class="col-1"></div>
+            <div class="col-2" title="Html5"><img src="../../../assets/images/ourServicesImages/html5.png"></div>
+            <div class="col-2" title="Css3"><img src="../../../assets/images/ourServicesImages/css3.png"></div>
+            <div class="col-2" title="Bootstrap"><img src="../../../assets/images/ourServicesImages/bootstrap.png">
+            </div>
+            <div class="col-2" title="JavaScript"><img src="../../../assets/images/ourServicesImages/javascript.png">
+            </div>
+            <div class="col-2" title="React.js"><img src="../../../assets/images/ourServicesImages/react.png"></div>
+            <div class="col-1"></div>
+        </div>
+
+        <div class="icons mt-4">
+            <div class="col-1"></div>
+            <div class="col-2" title="Angular"><img src="../../../assets/images/ourServicesImages/angular.png"></div>
+            <div class="col-2" title="Node.js"><img src="../../../assets/images/ourServicesImages/node-js.png"></div>
+            <div class="col-2" title="MySQL"><img src="../../../assets/images/ourServicesImages/mysql.png"></div>
+            <div class="col-2" title="Sequelize"><img src="../../../assets/images/ourServicesImages/sequelize.png">
+            </div>
+            <div class="col-2" title="PHP"><img src="../../../assets/images/ourServicesImages/php.png"></div>
+            <div class="col-1"></div>
+        </div>
+
+    </div>
+
+</div>
