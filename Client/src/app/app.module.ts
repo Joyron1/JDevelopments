@@ -7,6 +7,8 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { SwiperModule } from 'swiper/angular';
+
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -21,6 +23,7 @@ import { AdminPortfolioComponent } from './pages/admin/components/admin-portfoli
 import { AdminContactInfoComponent } from './pages/admin/components/admin-contact-info/admin-contact-info.component';
 import { AdminContactMessageComponent } from './pages/admin/components/admin-contact-message/admin-contact-message.component';
 import { AdminNavbarComponent } from './components/admin-navbar/admin-navbar.component';
+import { FrameworksSliderComponent } from './components/frameworks-slider/frameworks-slider.component';
 
 
 @NgModule({
@@ -40,6 +43,7 @@ import { AdminNavbarComponent } from './components/admin-navbar/admin-navbar.com
     AdminContactInfoComponent,
     AdminContactMessageComponent,
     AdminNavbarComponent,
+    FrameworksSliderComponent,
   ],
 
   imports: [
@@ -48,7 +52,8 @@ import { AdminNavbarComponent } from './components/admin-navbar/admin-navbar.com
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    SwiperModule
   ],
   providers: [],
   bootstrap: [AppComponent]

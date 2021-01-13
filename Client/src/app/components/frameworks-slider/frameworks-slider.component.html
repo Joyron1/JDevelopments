@@ -1,0 +1,9 @@
+<swiper [slidesPerView]="slidesNum" (swiper)="onSwiper($event)" (slideChange)="onSlideChange()" [autoplay]="true"
+    [navigation]="true" style="cursor: grab;">
+    <ng-container *ngFor="let slide of slides">
+        <ng-template swiperSlide>
+            <img src="{{slide.img}}" width="50" height="50"><br>
+            <small>{{slide.title}}</small>
+        </ng-template>
+    </ng-container>
+</swiper>
