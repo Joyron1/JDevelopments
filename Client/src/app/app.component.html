@@ -1,3 +1,6 @@
+<div class="back-to-top" [@fadeIn]="isFadeIn ? 'open' : 'closed'">
+    <span (click)="backToTop()"><img src="./assets/images/up-arrow.png" width="40"></span>
+</div>
 <div>
     <div class="sticky-top">
         <app-navbar> </app-navbar>

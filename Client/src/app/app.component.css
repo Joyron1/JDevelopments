@@ -2,3 +2,20 @@
     direction: rtl;
     font-family: 'Assistant', sans-serif;
 }
+
+ /* Back to Top btn css */
+.back-to-top{
+    position: fixed;
+    bottom: 3%;
+    right: 3%;
+    z-index: 9999;
+}
+.back-to-top:hover{
+    cursor: pointer;
+    animation-duration: 0.4s;
+    animation-name: changewidth;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    transform: scale(1.2);
+    transition: transform 500ms;
+}
