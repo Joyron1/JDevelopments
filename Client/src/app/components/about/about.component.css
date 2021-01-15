@@ -48,5 +48,6 @@
         background:linear-gradient(to bottom, rgba(0, 0, 0, 0.719), rgba(128, 128, 128, 0.822)) ,url('../../../assets/images/parallax2.jpg');
         background-attachment: relative;
         background-size: cover;
+        background-position: center;
     }
 }
