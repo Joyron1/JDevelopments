@@ -1,4 +1,4 @@
-<div class="row" id="leaveInfoForm">
+<div class="row" id="leaveInfoForm" *ngIf="this.formIsFilled==false">
     <div class="col-xl-12 col-md-12 col-sm-12 leaveInfoTxt">
         <div>
             <p>בואו לקדם ולהנגיש את העסק שלכם לעוד אלפי לקוחות!</p>
@@ -27,12 +27,17 @@
     </div>
 
     <div class="col-12 text-light" style="text-align: center; direction: rtl;">
-        <p>{{fieldsMsg}}</p>
-        <p>{{thanksMsg}}</p>
+        <p class="mt-">{{fieldsMsg}}</p>
     </div>
 
     <div class="col-xl-12 col-md-12 col-sm-12" style="text-align:center;">
         <button type="button" class="btn btn-outline-warning" style="width:100px;" (click)="onSubmit()">שלח/י</button>
     </div>
 
+</div>
+
+<div class="row no-gutters alerts">
+    <div class="col-12 text-light" style="text-align: center; direction: rtl;">
+        <p id="thanks-msg">{{thanksMsg}}</p>
+    </div>
 </div>

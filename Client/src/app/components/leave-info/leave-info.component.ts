@@ -12,6 +12,7 @@ export class LeaveInfoComponent implements OnInit {
   public fieldsMsg: string = "";
   public thanksMsg: string = "";
   public obj: Info = new Info();
+  formIsFilled: boolean = false;
   constructor(public api: ApiService) { }
 
   ngOnInit(): void {
@@ -32,10 +33,13 @@ export class LeaveInfoComponent implements OnInit {
   }
 
   private newMethod() {
+    this.formIsFilled = true;
     this.fieldsMsg = "";
-    this.thanksMsg = "תודה שהשארת לנו פרטים, הצוות שלנו ייצור איתך קשר בקרוב! "
-    setInterval(function () {
-      window.location.reload();
-    }, 2000);
+    this.thanksMsg = "תודה שהשארת לנו פרטים, הצוות שלנו ייצור איתך קשר בקרוב! ";
+    document.getElementById('thanks-msg').style.fontSize = "20px";
+    console.log(this.formIsFilled)
+    // setInterval(function () {
+    //   window.location.reload();
+    // }, 2000);
   }
 }

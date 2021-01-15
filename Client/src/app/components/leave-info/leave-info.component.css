@@ -13,6 +13,10 @@
     font-family: 'Assistant', sans-serif;
 }
 
+/* .alerts .thanks-msg{
+    font-size: large;
+} */
+
 
 @media (max-width: 520px) {
     .leaveInfoTxt{
