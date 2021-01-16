@@ -4,6 +4,10 @@ const cors = require('cors');
 const http = require('http')
 const bodyParser = require('body-parser');
 
+const imagemin = require('imagemin');
+const imageminJpegtran = require('imagemin-jpegtran');
+const imageminPngquant = require('imagemin-pngquant');
+
 const Sequelize = require('sequelize');
 const sequelize = require('./utils/databse');
 

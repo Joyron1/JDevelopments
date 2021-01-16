@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+
 const portfolioController = require('../controllers/portfolioController')
 
 var multer = require('multer');
@@ -7,14 +8,17 @@ var multer = require('multer');
 var storage = multer.diskStorage({
     // destination
     destination: function (req, file, cb) {
-        cb(null, 'uploads')
+        cb(null, 'uploads/')
     },
     filename: function (req, file, cb) {
         let dt = new Date().getTime();
         //  console.log("DTT : ", dt, file)
-        cb(null, String(dt) + file.originalname);
+        cb(null, file.originalname);
     }
+
 });
+
+
 
 var upload = multer({ storage: storage });
 

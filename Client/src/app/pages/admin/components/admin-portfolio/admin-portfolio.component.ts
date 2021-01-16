@@ -9,8 +9,8 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class AdminPortfolioComponent implements OnInit {
 
-  globalUrl = this.api.globalUrl + '/uploads/';
-  // globalUrl = 'http://localhost:5000/';
+  // globalUrl = this.api.globalUrl + '/uploads/';
+  globalUrl = 'http://localhost:5000/';
 
   public adminProjectsArray: any = [];
   public adminProjectsObs;

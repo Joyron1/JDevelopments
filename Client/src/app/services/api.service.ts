@@ -12,8 +12,8 @@ import { Admin } from '../Models/admin.model';
 })
 export class ApiService {
 
-  globalUrl = 'https://jdevelopments.co.il/jd_server/';
-  // globalUrl = 'http://localhost:5000/jd_server/';
+  // globalUrl = 'https://jdevelopments.co.il/jd_server/';
+  globalUrl = 'http://localhost:5000/jd_server/';
 
   public services = new BehaviorSubject<Service[]>([]);
   public projects = new BehaviorSubject<Portfolio[]>([]);
@@ -27,7 +27,6 @@ export class ApiService {
     this.getAllProjects();
     this.getAdmin();
     this.checkAdminPathname();
-    // this.getAllContactMessage();
   }
 
   checkAdminPathname() {
