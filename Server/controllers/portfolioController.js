@@ -31,14 +31,14 @@ exports.getProjectById = async (req, res, next) => {
 }
 
 exports.insertProject = async (req, res, next) => {
-    console.log("insert project: ", req.body);
+    // console.log("insert project: ", req.body);
     let project = req.body;
     if (req.files[0]) {
         calculateSize(req.files[0].size);
         compressImage("uploads/" + req.files[0].filename);
         project.pc_img = req.files[0].filename;
-
     }
+
     await Portfolio.create(project).then(result => {
         res.send(sendToClient(result, null, 1));
         // console.log("new project:", result)
@@ -62,9 +62,7 @@ exports.deleteProject = async (req, res, next) => {
 }
 
 exports.updateProject = async (req, res, next) => {
-    console.log("1")
     let project = req.body;
-    console.log("project:", project)
     if (req.files[0]) {
         calculateSize(req.files[0].size);
         compressImage("uploads/" + req.files[0].filename);
@@ -73,7 +71,6 @@ exports.updateProject = async (req, res, next) => {
     await Portfolio.update(project, {
         where: { id: project.id }
     }).then(result => {
-        console.log("2");
         res.send(sendToClient(result, null, 1));
     }).catch(err => {
         res.send(sendToClient(null, err, 0));

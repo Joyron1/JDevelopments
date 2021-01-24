@@ -10,6 +10,9 @@ import { Meta, Title } from '@angular/platform-browser';
 })
 export class OurServicesComponent implements OnInit {
 
+  // globalUrl = this.api.globalUrl + '/uploads/';
+  globalUrl = 'http://localhost:5000/';
+
   public servicesArray: Service[];
   public servicesObs;
 
@@ -27,10 +30,7 @@ export class OurServicesComponent implements OnInit {
   ];
 
   constructor(public api: ApiService, private title: Title, private meta: Meta) {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
+    this.api.scrollTop();
 
     this.servicesObs = this.api.services.subscribe(servicesService => {
       console.log("Observable:", servicesService)

@@ -1,20 +1,119 @@
 <div class="row no-gutters">
     <div class="col-12 mt-5">
         <header>Services Panel</header>
-        <p type="button" class="mt-5">Add new service <i class="fas fa-plus-circle"></i></p>
+        <p type="button" class="btn mt-5" data-toggle="modal" data-target="#addModal" style="color: white;">הוספת פרויקט
+            חדש
+            <i class="fas fa-plus-circle"></i>
+        </p>
     </div>
-    <div class="col-4 serviceCard my-5" *ngFor="let adminService of adminServicesArray">
-        <img src="{{adminService.img}}">
+    <div class="col-xl-4 col-lg-6 col-md-6 col- p-3 serviceCard my-5" *ngFor="let adminService of adminServicesArray">
+        <img src="{{globalUrl}}{{adminService.img}}">
         <h5 class="card-title my-2">{{adminService.title}}</h5>
         <div class="container description my-3">
             <p>{{adminService.description}}</p>
         </div>
 
-        <div class="row no-gutters adminBtnServ">
-            <div class="col-6">
-                <span type="button" class="btn btn-danger">DELETE <i class="fas fa-trash"></i> </span>
-                <span type="button" class="btn btn-success">EDIT <i class="fas fa-pencil-alt"></i></span> </div>
+        <div class="admin-services-buttons">
+            <div type="button" id="del-project" class="btn btn-danger" (click)="deleteService(adminService.id)">
+                DELETE <i class="fas fa-trash"></i> </div>
+            <div type="button" id="edit-project" class="btn btn-success" data-toggle="modal" data-target="#updateModal"
+                (click)=getServiceById(adminService.id)>
+                EDIT <i class="fas fa-pencil-alt"></i>
+            </div>
         </div>
 
+    </div>
+</div>
+
+
+<!-- ADD NEW PROJECT MODAL -->
+<div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title text-dark" id="addModalLabel">חלון הוספת פרויקט</h2>
+                <button type="button" id="closeAddModal" class="btn" data-dismiss="modal" aria-label="Close">X</button>
+            </div>
+            <div class="modal-body">
+                <div class="row no-gutters" style="direction: rtl; text-align:right;color: black;">
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label for="title">הכנס שם שירות:</label>
+                            <input type="text" class="form-control" id="title" [(ngModel)]=title />
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label for="male">הכנס תיאור שירות:</label>
+                            <textarea type="text" class="form-control" id="description"
+                                [(ngModel)]=description></textarea>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group">
+                            <div> <small>העלאת תמונה:</small></div>
+                            <input type="file" name="image" id="imageFile" (change)="addImage($event)">
+                        </div>
+                    </div>
+                    <div class="col-12" style="text-align:center;">
+                        <span
+                            style="margin:10px 0xp;font-size: 30px;font-weight: 700; font-family: 'Assistant', san-serif;">
+                            {{addMsg}} </span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">סגור חלון</button>
+                <button type="button" class="btn btn-primary" (click)="insertService()">הוספת שירות</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- UPDADE PROJECT MODAL -->
+<div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title text-dark" id="updateModalLabel">חלון עידכון שירות קיים</h2>
+                <button type="button" id="closeUpdateModal" class="btn" data-dismiss="modal" aria-label="Close"
+                    (click)="resetUpdatedData()">X</button>
+            </div>
+            <div class="modal-body">
+                <div class="row no-gutters" style="direction: rtl; text-align:right;color: black;">
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label for="title">עדכן שם שירות:</label>
+                            <input type="text" class="form-control" id="title" [(ngModel)]=title />
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label for="male">עדכן תיאור שירות:</label>
+                            <textarea type="text" class="form-control" id="description"
+                                [(ngModel)]=description></textarea>
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="form-group">
+                            <div> <small>העלאת תמונה חדשה:</small></div>
+                            <input type="file" name="image" id="imageFile" (change)="updateImage($event)">
+                        </div>
+                    </div>
+                    <div class="col-12" style="text-align:center;">
+                        <span
+                            style="margin:10px 0xp;font-size: 30px;font-weight: 700; font-family: 'Assistant', san-serif;">
+                            {{updateMsg}} </span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="resetUpdatedData()">סגור
+                    חלון</button>
+                <button type="button" class="btn btn-primary" (click)="updateService()">עידכון פרויקט</button>
+            </div>
+        </div>
     </div>
 </div>

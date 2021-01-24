@@ -39,13 +39,10 @@ export class AdminPortfolioComponent implements OnInit {
 
 
   constructor(public api: ApiService) {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
+    this.api.scrollTop();
 
     this.adminProjectsObs = this.api.projects.subscribe(adminProjectsService => {
-      console.log("Observable:", adminProjectsService)
+      console.log("admin projects Observable:", adminProjectsService)
       this.adminProjectsArray = [...adminProjectsService];
     });
   }

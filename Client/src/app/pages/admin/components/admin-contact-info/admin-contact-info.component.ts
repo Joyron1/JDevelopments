@@ -13,7 +13,9 @@ export class AdminContactInfoComponent implements OnInit {
   public contactInfoObs;
 
   constructor(public api: ApiService) {
-    this.api.getAllContactInfo();
+    this.api.scrollTop();
+    // this.api.getAllContactInfo();
+
     this.contactInfoObs = this.api.ContactInfo.subscribe(contactInfoService => {
       console.log("contactMsgService:", contactInfoService)
       this.contactInfoArray = [...contactInfoService];

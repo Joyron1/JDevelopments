@@ -19,3 +19,8 @@ header{
 .adminBtnServ span{
     margin-left: 20px;
 }
+.admin-projects-buttons#del-project,#edit-project{
+    
+     margin: 0px 10px;
+    
+}

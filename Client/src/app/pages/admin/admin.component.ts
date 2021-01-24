@@ -28,6 +28,7 @@ export class AdminComponent implements OnInit {
   errMsg = "";
 
   constructor(public api: ApiService) {
+    this.api.scrollTop();
 
     this.adminObs = this.api.admin.subscribe(adminService => { //admin OBS
       console.log("adminService:", adminService);
@@ -35,15 +36,15 @@ export class AdminComponent implements OnInit {
 
     });
 
-    this.servicesObs = this.api.services.subscribe(servicesService => { //services OBS
-      // console.log("servicesService:", servicesService);
-      this.servicesArray = [...servicesService];
-    });
+    // this.servicesObs = this.api.services.subscribe(servicesService => { //services OBS
+    //   console.log("services Observable:", servicesService);
+    //   this.servicesArray = [...servicesService];
+    // });
 
-    this.projectsObs = this.api.projects.subscribe(projectsService => {
-      console.log("Observable:", projectsService);
-      this.projectsArray = [...projectsService];
-    });
+    // this.projectsObs = this.api.projects.subscribe(projectsService => { //projects OBS
+    //   console.log("projects Observable:", projectsService);
+    //   this.projectsArray = [...projectsService];
+    // });
 
   }
 

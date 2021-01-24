@@ -3,6 +3,6 @@ export class Service {
     title: string;
     description: string;
     img: string;
-    createdAt: Date;
-    updatedAt: Date;
+    createdAt?: Date;
+    updatedAt?: Date;
 }

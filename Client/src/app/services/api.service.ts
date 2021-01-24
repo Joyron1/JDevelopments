@@ -27,6 +27,15 @@ export class ApiService {
     this.getAllProjects();
     this.getAdmin();
     this.checkAdminPathname();
+    this.getAllContactInfo();
+    this.getAllContactMessage();
+  }
+
+  scrollTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
   }
 
   checkAdminPathname() {
@@ -73,6 +82,56 @@ export class ApiService {
           if (data['status'] == 1)
             this.services.next(data['data']);
           // resolve(data);
+        });
+      } catch (err) {
+        console.log(err);
+      }
+    });
+  }
+
+  updateService(obj): Promise<Service> {
+    console.log("service obj:", obj)
+    return new Promise(async (resolve, reject) => {
+      try {
+        await this.http.post<Service>(`${this.globalUrl}` + `services/updateService`, obj).subscribe(data => {
+          if (data['status'] == 1) {
+            // this.projects.next(data['data']);
+            resolve(data);
+          }
+        });
+      } catch (err) {
+        console.log(err);
+      }
+    });
+  }
+
+
+  deleteService(s_id) {
+    console.log("delete service:", s_id)
+    return new Promise(async (resolve, reject) => {
+      try {
+        await this.http.get(`${this.globalUrl}services/deleteService?id=${s_id}`).subscribe(data => {
+
+          if (data['status'] == 1) {
+            console.log("data status check:", data['status']);
+            // this.user.next(data['data']);
+            resolve(data);
+            console.log("product deleted")
+          }
+        });
+      } catch (err) {
+        console.log(err);
+      }
+    });
+  }
+
+  getServiceById(id): Promise<Service[]> {
+    return new Promise(async (resolve, reject) => {
+      try {
+        await this.http.get<Service[]>(`${this.globalUrl}services/getServiceById?id=${id}`).subscribe(data => {
+          if (data['status'] == 1)
+            // this.selectedProduct.next(data['data']);
+            resolve(data);
         });
       } catch (err) {
         console.log(err);
@@ -151,7 +210,7 @@ export class ApiService {
           if (data['status'] == 1) {
             // this.user.next(data['data']);
             resolve(data);
-            console.log("product deleted")
+            console.log("PROJECT DELETED")
           }
         });
       } catch (err) {

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-home',
@@ -10,12 +11,9 @@ export class HomeComponent implements OnInit {
 
   width = window.innerWidth;
 
-  constructor(private title: Title, private meta: Meta) {
+  constructor(private title: Title, private meta: Meta, public api: ApiService) {
 
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
+    this.api.scrollTop();
 
   }
 

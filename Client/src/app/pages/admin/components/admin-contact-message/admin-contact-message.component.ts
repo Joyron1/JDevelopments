@@ -13,7 +13,9 @@ export class AdminContactMessageComponent implements OnInit {
   public contactMessageObs;
 
   constructor(public api: ApiService) {
-    this.api.getAllContactMessage();
+    this.api.scrollTop();
+    // this.api.getAllContactMessage();
+
     this.contactMessageObs = this.api.ContactMessage.subscribe(contactMsgService => {
       console.log("contactMsgService:", contactMsgService)
       this.contactMessageArray = [...contactMsgService];

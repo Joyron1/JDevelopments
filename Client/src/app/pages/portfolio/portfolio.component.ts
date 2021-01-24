@@ -18,10 +18,7 @@ export class PortfolioComponent implements OnInit {
   public projectsObs;
 
   constructor(public api: ApiService, private title: Title, private meta: Meta) {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
+    this.api.scrollTop();
 
     this.projectsObs = this.api.projects.subscribe(projectsService => {
       console.log("Observable:", projectsService)

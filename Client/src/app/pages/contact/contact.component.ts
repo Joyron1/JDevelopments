@@ -17,11 +17,8 @@ export class ContactComponent implements OnInit {
 
   constructor(public api: ApiService, private title: Title, private meta: Meta) {
 
+    this.api.scrollTop();
 
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
   }
 
   ngOnInit(): void {

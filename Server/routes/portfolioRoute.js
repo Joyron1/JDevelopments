@@ -1,8 +1,6 @@
 const express = require('express');
 const router = express.Router();
-
 const portfolioController = require('../controllers/portfolioController')
-
 var multer = require('multer');
 
 var storage = multer.diskStorage({
@@ -17,8 +15,6 @@ var storage = multer.diskStorage({
     }
 
 });
-
-
 
 var upload = multer({ storage: storage });
 
