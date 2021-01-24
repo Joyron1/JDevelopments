@@ -14,7 +14,7 @@ export class AdminComponent implements OnInit {
 
   public obj: Admin = new Admin();
   // public adminLoggedIn: Admin ;
-  public adminLoggedIn = "logged";
+  public adminLoggedIn;
 
   public admin: Admin[];
   public adminObs;

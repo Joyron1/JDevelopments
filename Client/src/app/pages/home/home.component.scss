@@ -1,5 +1,6 @@
 #opener{
-    background: rgba(0, 0, 0, 0.5);
+    background:linear-gradient(-180deg, rgba(0, 0, 0, 0.5), rgba(10, 218, 156, 0.2));
+    // background-color: ;
     width:auto;
     min-height: 100vh;
     justify-content: center;
@@ -27,23 +28,40 @@
             font-size: 37px;
             letter-spacing: 20px;
         }
-        .quotation-btn{
+        .quotation-btn,.about-btn{
+            text-align: center;
+            align-items: center;
+            width:200px;
+            font-size: 20px;
             margin: 20px;
-            background: rgba(10, 218, 156, 0.658);
             color: white;
-            border-radius: 25px;
+            border-radius: 10px;
+            transition: transform 0.5s;
+            &:hover{
+            -ms-transform: scale(1.1); /* IE 9 */
+            -webkit-transform: scale(1.1); /* Safari 3-8 */
+             transform: scale(1.1); 
+            }
         }
+        .quotation-btn{
+            background: rgba(10, 218, 156, 0.658);            
+        }
+        .about-btn{
+            background: rgba(255, 255, 255, 0.658);
+        }
+    }
+    .videoBG{
+        min-width: 100%;
+        height: 120vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        
     }
 }
 
-.videoBG{
-    width: 100%;
-    min-height: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: -1;
-}
+
 
 .leaveInfoMain{ 
     padding: 30px;
@@ -55,8 +73,8 @@
 
 @media (max-width: 1294px) {
     #opener{
-        background:linear-gradient(to bottom, rgba(0, 0, 0, 0.664), rgba(109, 105, 105, 0.521)) ,url('../../../assets/images/phoneBg_2.jpg');
-        background-size: 1366px;
+        // background:linear-gradient(to bottom, rgba(0, 0, 0, 0.664), rgba(109, 105, 105, 0.521)) ,url('../../../assets/images/phoneBg_2.jpg');
+        // background-size: 1366px;
         .text{
             color: white;
             text-align: center;
@@ -80,17 +98,25 @@
                 letter-spacing: 10px;
             }
         }
+        .videoBG{
+            min-width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
     }
     
 }
 
 @media (max-width: 767px) {
     #opener{
-        background:linear-gradient(to bottom, rgba(0, 0, 0, 0.603), rgba(0, 0, 0, 0.5)) ,url('../../../assets/images/phoneBg_2.jpg');
-        background-size: 767px;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
+        // background:linear-gradient(to bottom, rgba(0, 0, 0, 0.603), rgba(0, 0, 0, 0.5)) ,url('../../../assets/images/phoneBg_2.jpg');
+        // background-size: 767px;
+        // background-position: center;
+        // background-repeat: no-repeat;
+        // background-size: cover;
         .text{
             color: white;
             text-align: center;
@@ -98,7 +124,7 @@
             line-height: 20px;
             position: absolute;
             top:35%;
-            animation: transitionIn 2s ease;
+            animation: transitionIn 4s ease;
             p{
                 text-shadow:2px 0px 20px rgba(0, 0, 0, 0.384);
                 padding: 0px;
@@ -116,6 +142,22 @@
                 letter-spacing: 2px;
                 margin-right: 0px;
             }
+            .quotation-btn,.about-btn{
+                text-align: center;
+                align-items: center;
+                width:150px;
+                font-size: 15px;
+                margin: 10px;
+                
+            }
+        }
+        .videoBG{
+            min-width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: -600px;
+            z-index: -1;
         }
     }
 }
@@ -123,11 +165,9 @@
 @keyframes transitionIn {
     from {
         opacity: 0;
-        transform: rotateY(-60deg);
     }
 
     to {
         opacity: 1;
-        transform: rotateY(0);
     }
 }

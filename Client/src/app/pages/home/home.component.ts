@@ -30,6 +30,12 @@ export class HomeComponent implements OnInit {
     console.log(this.width)
   }
 
+  scrollToAboutUs = () => {
+    document.getElementById('about-us-scroll').scrollIntoView({
+      behavior: 'smooth'
+    });
+  }
+
 }
 
 

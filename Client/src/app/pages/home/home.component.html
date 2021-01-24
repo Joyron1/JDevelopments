@@ -7,8 +7,9 @@
             <p><span>PROFESSIONAL</span> WEB SOLUTIONS</p>
         </div>
         <button type="button" class="btn quotation-btn" routerLink="/contact-us">לקבלת הצעת מחיר</button>
+        <button type="button" class="btn about-btn" (click)="scrollToAboutUs()">קצת עלינו</button>
     </div>
-    <video autoplay muted loop class="videoBG" *ngIf="width > 1294">
+    <video autoplay muted loop class="videoBG">
         <source src="../../../assets/videos/video1.mp4" type="video/mp4" name="בניית אתרים" />
     </video>
 </div>
@@ -17,4 +18,5 @@
     <app-leave-info></app-leave-info>
 </div>
 
+<div id="about-us-scroll"></div>
 <app-about></app-about>
