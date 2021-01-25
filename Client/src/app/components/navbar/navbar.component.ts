@@ -27,12 +27,12 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
 
-    console.log("width", this.getWidth());
-    const menuIcon = document.querySelector('.hamburger-menu');
-    const navbar = document.querySelector('.navbar');
-    menuIcon.addEventListener('click', () => {
-      navbar.classList.toggle('change');
-    });
+    // console.log("width", this.getWidth());
+    // const menuIcon = document.querySelector('.hamburger-menu');
+    // const navbar = document.querySelector('.navbar');
+    // menuIcon.addEventListener('click', () => {
+    //   navbar.classList.toggle('change');
+    // });
   }
 
   getWidth() {

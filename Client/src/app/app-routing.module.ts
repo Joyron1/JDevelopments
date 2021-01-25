@@ -10,8 +10,6 @@ import { AdminContactInfoComponent } from './pages/admin/components/admin-contac
 import { AdminContactMessageComponent } from './pages/admin/components/admin-contact-message/admin-contact-message.component';
 import { AdminPortfolioComponent } from './pages/admin/components/admin-portfolio/admin-portfolio.component';
 
-
-
 const routes: Routes = [
   {
     path: '',
@@ -30,14 +28,9 @@ const routes: Routes = [
     component: ContactComponent
   },
   {
-    path: 'admin',
+    path: 'jd-admin',
     component: AdminComponent,
     children: [
-      {
-        path: '',
-        redirectTo: 'admin',
-        pathMatch: 'full'
-      },
       {
         path: 'adminOurServices',
         component: AdminServicesComponent

@@ -4,6 +4,8 @@ import { Admin } from 'src/app/Models/admin.model';
 import { Service } from 'src/app/Models/services.model';
 import { Portfolio } from 'src/app/Models/portfolio.model';
 import * as $ from "jquery";
+import { Info } from 'src/app/Models/info.model';
+import { Contact } from 'src/app/Models/contact.model';
 
 @Component({
   selector: 'app-admin',
@@ -13,7 +15,6 @@ import * as $ from "jquery";
 export class AdminComponent implements OnInit {
 
   public obj: Admin = new Admin();
-  // public adminLoggedIn: Admin ;
   public adminLoggedIn;
 
   public admin: Admin[];
@@ -25,38 +26,60 @@ export class AdminComponent implements OnInit {
   public projectsArray: Portfolio[];
   public projectsObs;
 
+  public contactInfoArray: Info[];
+  public contactInfoObs;
+
+  public contactMessageArray: Contact[];
+  public contactMessageObs;
+
   errMsg = "";
+  public pathName;
+
+
 
   constructor(public api: ApiService) {
     this.api.scrollTop();
+    let path = window.location.pathname;
+    console.log(path);
+    this.pathName = path;
 
     this.adminObs = this.api.admin.subscribe(adminService => { //admin OBS
       console.log("adminService:", adminService);
       this.admin = [...adminService];
-
     });
 
-    // this.servicesObs = this.api.services.subscribe(servicesService => { //services OBS
-    //   console.log("services Observable:", servicesService);
-    //   this.servicesArray = [...servicesService];
-    // });
+    this.servicesObs = this.api.services.subscribe(servicesService => { //services OBS
+      console.log("services Observable:", servicesService);
+      this.servicesArray = [...servicesService];
+    });
 
-    // this.projectsObs = this.api.projects.subscribe(projectsService => { //projects OBS
-    //   console.log("projects Observable:", projectsService);
-    //   this.projectsArray = [...projectsService];
-    // });
+    this.projectsObs = this.api.projects.subscribe(projectsService => { //projects OBS
+      console.log("projects Observable:", projectsService);
+      this.projectsArray = [...projectsService];
+    });
+
+    this.contactInfoObs = this.api.ContactInfo.subscribe(contactInfoService => { //contact Info OBS
+      console.log("contact Info Observable:", contactInfoService)
+      this.contactInfoArray = [...contactInfoService];
+    });
+
+    this.contactMessageObs = this.api.ContactMessage.subscribe(contactMsgService => {
+      console.log("contact Msg Observable:", contactMsgService)
+      this.contactMessageArray = [...contactMsgService];
+    });
 
   }
 
   ngOnInit(): void {
-
   }
 
   onSubmit() {
-    console.log("Admin obj:", this.obj)
+    // console.log("Admin obj:", this.obj)
     console.log(this.admin[0].email)
     if (this.obj.email == this.admin[0].email && this.obj.password == this.admin[0].password) {
       this.adminLoggedIn = this.obj;
+      localStorage.setItem('logged-admin', JSON.stringify(this.adminLoggedIn));
+      console.log("admin logged in:", this.adminLoggedIn);
     }
     else {
       this.errMsg = "Something went wrong, check the details again..."
@@ -66,6 +89,9 @@ export class AdminComponent implements OnInit {
   public ngOnDestroy() {
     this.adminObs.unsubscribe();
     this.servicesObs.unsubscribe();
+    this.projectsObs.unsubscribe();
+    this.contactInfoObs.unsubscribe();
+    this.contactMessageObs.unsubscribe();
   }
 
   goToHomePage() {

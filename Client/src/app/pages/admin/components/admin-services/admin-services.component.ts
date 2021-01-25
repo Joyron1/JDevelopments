@@ -5,7 +5,7 @@ import { ApiService } from 'src/app/services/api.service';
 @Component({
   selector: 'app-admin-services',
   templateUrl: './admin-services.component.html',
-  styleUrls: ['./admin-services.component.css']
+  styleUrls: ['./admin-services.component.scss']
 })
 export class AdminServicesComponent implements OnInit {
 
@@ -31,6 +31,7 @@ export class AdminServicesComponent implements OnInit {
 
   public adminServicesArray: Service[];
   public adminServicesObs;
+  pathName: string;
 
   constructor(public api: ApiService) {
     this.api.scrollTop();
@@ -43,7 +44,9 @@ export class AdminServicesComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    let path = window.location.pathname;
+    console.log(path);
+    this.pathName = path;
   }
 
   addImage(fileInput: any) {

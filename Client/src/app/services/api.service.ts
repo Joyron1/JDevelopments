@@ -40,8 +40,8 @@ export class ApiService {
 
   checkAdminPathname() {
     let path = window.location.pathname;
-    this.adminPathname = path.startsWith("/admin");
-    console.log(this.adminPathname)
+    this.adminPathname = path.startsWith("/jd-admin");
+    console.log(this.adminPathname);
   }
 
   // GET ADMIN DETAILS //
