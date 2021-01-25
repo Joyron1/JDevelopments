@@ -10,8 +10,8 @@ import { Meta, Title } from '@angular/platform-browser';
 })
 export class OurServicesComponent implements OnInit {
 
-  // globalUrl = this.api.globalUrl + '/uploads/';
-  globalUrl = 'http://localhost:5000/';
+  globalUrl = this.api.globalUrl + '/uploads/';
+  // globalUrl = 'http://localhost:5000/';
 
   public servicesArray: Service[];
   public servicesObs;
