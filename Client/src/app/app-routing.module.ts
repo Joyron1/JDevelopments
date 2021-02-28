@@ -9,47 +9,26 @@ import { AdminServicesComponent } from './pages/admin/components/admin-services/
 import { AdminContactInfoComponent } from './pages/admin/components/admin-contact-info/admin-contact-info.component';
 import { AdminContactMessageComponent } from './pages/admin/components/admin-contact-message/admin-contact-message.component';
 import { AdminPortfolioComponent } from './pages/admin/components/admin-portfolio/admin-portfolio.component';
+import { AdminMainComponent } from './pages/admin/components/admin-main/admin-main.component';
+import { PrivacyPolicyComponent } from './pages/privacy-policy/privacy-policy.component';
 
 const routes: Routes = [
+  { path: '', component: HomeComponent },
+  { path: 'our-services', component: OurServicesComponent },
+  { path: 'our-projects', component: PortfolioComponent },
+  { path: 'contact-us', component: ContactComponent },
   {
-    path: '',
-    component: HomeComponent
-  },
-  {
-    path: 'our-services',
-    component: OurServicesComponent
-  },
-  {
-    path: 'our-projects',
-    component: PortfolioComponent
-  },
-  {
-    path: 'contact-us',
-    component: ContactComponent
-  },
-  {
-    path: 'jd-admin',
-    component: AdminComponent,
+    path: 'jd-admin', component: AdminComponent,
     children: [
-      {
-        path: 'adminOurServices',
-        component: AdminServicesComponent
-      },
-      {
-        path: 'adminPortfolio',
-        component: AdminPortfolioComponent
-      },
-      {
-        path: 'adminContactInfo',
-        component: AdminContactInfoComponent
-      },
-      {
-        path: 'adminContactMessage',
-        component: AdminContactMessageComponent
-      },
+      { path: 'main', component: AdminMainComponent },
+      { path: 'services-page', component: AdminServicesComponent },
+      { path: 'projects-page', component: AdminPortfolioComponent },
+      { path: 'newsletter-page', component: AdminContactInfoComponent },
+      { path: 'contact-page', component: AdminContactMessageComponent },
     ]
+  },
+  { path: 'privacy-policy', component: PrivacyPolicyComponent }
 
-  }
 ];
 
 @NgModule({

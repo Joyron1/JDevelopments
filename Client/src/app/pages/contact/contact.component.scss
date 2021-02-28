@@ -1,16 +1,38 @@
 .mainContact{
-    justify-content: center;
-    background-size: cover;
-    background: linear-gradient(to bottom, rgba(199, 199, 199, 0.432), rgba(109, 105, 105, 0.521)) ,url('../../../assets/images/contactUs_2.jpg');
-    .contactForm{
-        background-color: white;
-        box-shadow: 0px 2px 10px black;
-        padding: 30px;
-        margin: 50px;
-        width: 600px;
-        h2{
+    padding: 100px 10px;
+    background: -webkit-linear-gradient(left,#546e7a,#78909c);
+    .right-section{
+        border-left: 1px solid rgba(255, 255, 255, 0.363);
+        margin: 20px 0px;
+        @media screen and(max-width:995px) { border-left: none; }
+        .text{
+            font-size: 20px; 
+            letter-spacing: 0.5px; 
+            line-height: 120%;
+            color: white;
             text-align: center;
-            font-size: 50px;
+            margin-bottom: 40px;
+            margin: auto;
+            max-width: 500px;
+            @media screen and (max-width:769px) { font-size: 20px; }
+        }
+        
+    }
+    .contactForm{
+        background-color: rgba(255, 255, 255, 0.582);
+        border-radius: 10px;
+        box-shadow: 0px 2px 10px black;
+        padding: 30px 10px;
+        margin: 20px auto;
+        max-width: 500px;
+        header{
+            text-align: center;
+            font-size: 40px;
+            line-height: 100%;
+            font-weight: bold;
+            font-family: 'Assistant', sans-serif;
+            margin-bottom: 10px;
+            @media screen and (max-width:769px) { font-size: 28px; }
         }
         .btn{
             width: 100%;
@@ -23,36 +45,90 @@
             }
         }
     }
-}
-
-@media (max-width: 769px){
-    .mainContact{
-        font-family: 'Assistant',sans-serif;
-        justify-content: center;
-        background-size: cover;
-        background: linear-gradient(to bottom, rgba(199, 199, 199, 0.432), rgba(109, 105, 105, 0.521)) ,url('../../../assets/images/contactUs_2.jpg');
-        .contactForm{
-            background-color: white;
-            box-shadow: 0px 2px 10px black;
-            padding: 30px 0px;
-            margin: 50px 20px;
-            width: 600px;
-            h2{
-                text-align: center;
-                font-size: 25px;
-            }
-            .btn{
-                width: 100%;
-                border-radius: 20px;
-                color: white;
-                background-color: rgba(0, 0, 0, 0.781);
+    // .vl {
+    //     position: absolute;
+    //     margin: 25px;
+    //     border-left: 1px solid rgba(255, 255, 255, 0.363);
+    //     height: 580px;
+    //     @media screen and (max-width:995px) {
+    //         display: none;
+    //     }
+    //   }
+    .contact-ways{
+        margin: 20px;
+        text-align: right;
+        display:flex;
+        flex-direction: column;
+        position: relative;
+        
+        .text{
+            font-size: 22px; 
+            letter-spacing: 2px; 
+            line-height: 120%;
+            color: white;
+            text-align: right;
+            max-width: 90%;
+        }
+        .social-media{
+            display: flex;
+            #instagram{margin: 0px 30px;}
+            #instagram,#whatsapp, #facebook{
+                transition: transform .3s ease-in-out;
                 &:hover{
-                    color: white;
-                    background-color: rgb(9, 202, 154);
+                    transform: scale(1.1);
                 }
             }
         }
+        .location{
+            color: white;
+            font-size: 15px;
+            position: relative;
+            .city{
+               font-size: 22px; 
+               margin-bottom:20px ;
+            }
+            .phone,.email{
+                margin-top: 10px;
+                i{
+                    font-size: 18px;
+                }
+                a{
+                    color: white;
+                }
+            }
+            .bg-vector{
+                max-width: 130%;
+                position: absolute;
+                left: 100px; top:-120px;
+                @media (max-width:1390px) { left: 50px; }
+                @media (max-width:1250px) { max-width: 110%; }
+                @media (max-width:1130px) { left: 0px; }
+                @media  screen and(max-width:1015px) { display: none; }
+            }
+        }
+        hr{
+            width: 25%;
+            background-color: rgba(255, 255, 255, 0.507);
+            margin-right: 0;
+        }
     }
-  }
 
+    @media screen and (max-width:995px) {
+        .contact-ways{
+            margin: 10px 20px;
+            text-align: center;
+            .text{
+                text-align: center;
+                max-width: 500px;
+                margin: auto;
+            }
+            .social-media{
+                justify-content: center;
+            }
+            hr{
+                margin-right: auto;
+            }
+        } 
+    }
+}
 

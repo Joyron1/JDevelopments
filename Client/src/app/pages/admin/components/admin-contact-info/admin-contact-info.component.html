@@ -1,34 +1,80 @@
 <div class="row no-gutters">
-    <div class="col-12 mt-5">
-        <header>Contact Info Panel</header>
-        <div class="pl-5 mt-5">
-            <p class="">In this page you can see the details of optional customers.</p>
-            <p>these people left this information for you to contact them back.</p>
-        </div>
+
+    <div class="col-12 mt-5 first-section">
+        <header>רשימת ניוזלטר</header>
+        <div class="text">רשימת לקוחות אשר השאירו פרטים והצטרפו לרשימת הניוזלטר של האתר</div>
     </div>
 
-    <div class="col-12 mt-5">
-        <table class="table text-light">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Full Name</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Phone</th>
-                    <th scope="col">Date</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let user of contactInfoArray">
-                    <th scope="row">{{user.id}}</th>
-                    <td>{{user.fullName}}</td>
-                    <td>{{user.email}}</td>
-                    <td>{{user.phone}}</td>
-                    <td>{{user.createdAt}}</td>
-                    <td><i type="button" class="fas fa-trash"></i></td>
-                    <td><i type="button" class="fas fa-pencil-alt"></i></td>
-                </tr>
+    <div class="col-12 container second-section">
 
-        </table>
+        <div class="accordion container p-0" id="accordionExample">
+            <div class="card" *ngFor="let user of contactInfoArray;index as i;">
+                <div class="card-header" id="heading{{i}}">
+                    <div class="row mb-0 wrapper">
+                        <span class="btn-block col-6" type="button" data-toggle="collapse"
+                            attr.data-target="#collapse{{i}}" aria-expanded="true" attr.aria-controls="{{i}}">
+                            <div class="user-name">{{user.fullName}}</div>
+                        </span>
+                        <td class="col-6 edit-btns">
+                            <span class="close-btn" type="button" (click)="deleteNewsletter(user.id)"><i
+                                    class="far fa-times-circle"></i></span>
+                            <span class="edit-btn" type="button" data-toggle="modal" data-target="#exampleModal">
+                                <fa-icon [icon]="faEdit" (click)="getUserID(user.id)"></fa-icon>
+                            </span>
+                        </td>
+                    </div>
+                </div>
+
+                <div id="collapse{{i}}" class="collapse p-2" aria-labelledby="heading" data-parent="#accordionExample">
+                    <div><b>שם מלא: </b> {{user.fullName}}</div>
+                    <div><b>כתובת אימייל: </b> {{user.email}}</div>
+                    <div><b>מספר נייד: </b> {{user.phone}}</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- Modal for adding a product if clicked on th PLUS COL-->
+<div class="modal fade" id="exampleModal" tabindex="1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header ">
+                <h1 class="modal-title text-dark mb-0" id="exampleModalLabel">עידכון פרטי משתמש</h1>
+            </div>
+            <div class="modal-body">
+                <div class="row no-gutters" style="direction: rtl;">
+                    <div class="col-12">
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="name" placeholder="שם מלא"
+                                [(ngModel)]=newUser.fullName>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="name" placeholder="כתובת אימייל"
+                                [(ngModel)]=newUser.email>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="name" placeholder="מספר נייד"
+                                [(ngModel)]=newUser.phone>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" (click)="editInfo()" data-dismiss="modal">עדכן
+                    פרטים</button>
+                <button type="button" id="closeAddModal" class="btn btn-secondary" data-dismiss="modal">
+                    סגור</button>
+            </div>
+        </div>
     </div>
 </div>

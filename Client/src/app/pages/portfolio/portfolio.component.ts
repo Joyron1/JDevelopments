@@ -21,7 +21,7 @@ export class PortfolioComponent implements OnInit {
     this.api.scrollTop();
 
     this.projectsObs = this.api.projects.subscribe(projectsService => {
-      console.log("Observable:", projectsService)
+      // console.log("Observable:", projectsService);
       this.projectsArray = [...projectsService];
     });
   }

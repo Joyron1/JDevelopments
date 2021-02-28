@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Portfolio } from 'src/app/Models/portfolio.model';
 import { ApiService } from 'src/app/services/api.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-admin-portfolio',
@@ -29,7 +30,7 @@ export class AdminPortfolioComponent implements OnInit {
   title: string;
   description: string;
   url: string;
-
+  token: string = JSON.parse(localStorage.getItem('admin-token'));
 
   formData: any = new FormData();
   pcImage: Array<File>;
@@ -60,7 +61,14 @@ export class AdminPortfolioComponent implements OnInit {
 
   async insertProject() {
     if (!this.title || !this.description || !this.url || !this.pcImage) {
-      this.addMsg = "עליך למלא את כל השדות בטופס!"
+      Swal.fire({
+        icon: 'error',
+        text: 'עליך למלא את כל השדות בטופס!',
+        showCloseButton: true,
+        confirmButtonText: 'אוקי',
+        timer: 3000,
+        timerProgressBar: true,
+      });
     }
     else {
       console.log("else")
@@ -68,6 +76,7 @@ export class AdminPortfolioComponent implements OnInit {
       this.formData.append('title', this.title);
       this.formData.append('description', this.description);
       this.formData.append('url', this.url);
+      this.formData.append('token', this.token);
 
       for (let i = 0; i < this.pcImage.length; i++) {
         this.formData.append(
@@ -76,17 +85,19 @@ export class AdminPortfolioComponent implements OnInit {
           this.pcImage[i]['name']
         );
       }
-      console.log("formdata:" + this.formData)
+      // console.log("formdata:" + this.formData);
       let result = await this.api.insertProject(this.formData);
-      console.log("The New Project Is :", result)
-      if (result['status'] === 1) {
-        this.addMsg = "הפרויקט התווסף בהצלחה!"
-        this.title = ""; this.description = ""; this.url = ""; this.addMsg = "";
-        this.pcImage = [];
-        console.log(this.title, this.description, this.url, this.addMsg, this.pcImage);
-        setTimeout(function () { document.getElementById('closeAddModal').click(); }, 1000);
-        this.api.getAllProjects();
-      }
+      // console.log("The New Project Is :", result);
+      result['status'] == 1 && Swal.fire({
+        icon: 'success',
+        text: 'הפרויקט התווסף בהצלחה!',
+        showCloseButton: true,
+        confirmButtonText: 'אוקי',
+        timer: 3000,
+        timerProgressBar: true,
+      }), this.title = ""; this.description = ""; this.url = ""; this.addMsg = ""; this.pcImage = [];
+      this.api.getAllProjects();
+
     }
   }
 
@@ -94,7 +105,7 @@ export class AdminPortfolioComponent implements OnInit {
     if (id) {
       let test = await this.api.getProjectById(id);
       this.selectedProject = test['data'];
-      console.log("selected product:", this.selectedProject[0]);
+      // console.log("selected product:", this.selectedProject[0]);
       this.title = this.selectedProject[0]['title']; this.description = this.selectedProject[0]['description'];
       this.url = this.selectedProject[0]['url']; this.id = this.selectedProject[0]['id'];
     }
@@ -107,8 +118,9 @@ export class AdminPortfolioComponent implements OnInit {
     this.formData.append('title', this.title);
     this.formData.append('description', this.description);
     this.formData.append('url', this.url);
+    this.formData.append('token', this.token);
 
-    console.log("edited picture:", this.editedFilesToUpload)
+    // console.log("edited picture:", this.editedFilesToUpload);
     if (this.editedFilesToUpload) {
       for (let i = 0; i < this.editedFilesToUpload.length; i++) {
         this.formData.append(
@@ -121,15 +133,17 @@ export class AdminPortfolioComponent implements OnInit {
 
     console.log("formdata:", this.formData)
     let result = await this.api.updateProject(this.formData);
-    console.log("The Updated Project Is :", result)
-    if (result['status'] === 1) {
-      this.updateMsg = "הפרויקט עודכן בהצלחה!";
-      this.editedFilesToUpload = [];
-      this.title = ""; this.description = ""; this.url = "";
-      this.updateMsg = "";
-      setTimeout(function () { document.getElementById('closeUpdateModal').click(); }, 1000);
-      this.api.getAllProjects();
-    }
+    // console.log("The Updated Project Is :", result);
+    result['status'] == 1 && Swal.fire({
+      icon: 'success',
+      text: 'הפרטים עודכנו בהצלחה',
+      showCloseButton: true,
+      confirmButtonText: 'אוקי',
+      timer: 3000,
+      timerProgressBar: true,
+    }), this.editedFilesToUpload = []; this.title = ""; this.description = ""; this.url = ""; this.updateMsg = "";
+    this.api.getAllProjects();
+
   }
 
 
@@ -140,7 +154,7 @@ export class AdminPortfolioComponent implements OnInit {
 
   async deleteProject(p_id) {
     console.log("p_id to delete:", p_id)
-    let removed = this.api.deleteProject(p_id);
+    let removed = this.api.deleteProject(p_id, this.token);
     await this.api.getAllProjects();
   }
 

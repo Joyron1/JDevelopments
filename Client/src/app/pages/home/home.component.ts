@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit {
       { name: 'robots', content: 'index, follow' },
     ]);
 
-    console.log(this.width)
+    // console.log(this.width)
   }
 
   scrollToAboutUs = () => {

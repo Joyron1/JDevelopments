@@ -6,7 +6,7 @@ import { Meta, Title } from '@angular/platform-browser';
 @Component({
   selector: 'app-our-services',
   templateUrl: './our-services.component.html',
-  styleUrls: ['./our-services.component.css']
+  styleUrls: ['./our-services.component.scss']
 })
 export class OurServicesComponent implements OnInit {
 
@@ -33,7 +33,7 @@ export class OurServicesComponent implements OnInit {
     this.api.scrollTop();
 
     this.servicesObs = this.api.services.subscribe(servicesService => {
-      console.log("Observable:", servicesService)
+      // console.log("Observable:", servicesService);
       this.servicesArray = [...servicesService];
     });
 

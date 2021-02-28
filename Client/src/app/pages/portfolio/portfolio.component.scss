@@ -1,27 +1,51 @@
 .mainPortfolio{
     overflow-x: hidden; text-align: center;
     font-family: 'Assistant', sans-serif;
+    background: -webkit-linear-gradient(left,#546e7a,#78909c);
+    padding: 100px 10px;
     .projects-txt{
         padding: 20px;
-        #header{
-            font-size: 40px; font-weight: 600; letter-spacing: 1px;
+        color: white;
+        .header{
+            font-size: 40px; 
+            font-weight: 600; 
+            letter-spacing: 1px;
+            font-family: 'Assistant', sans-serif;
         }
-        #paragraph{
-            font-size: 20px; letter-spacing: 1px; line-height: 25px;
+        .text{
+            font-size: 20px; 
+            letter-spacing: 1px; 
+            line-height: 25px;
+        }
+        hr{
+            width:200px; 
+            background-color:rgba(255, 255, 255, 0.486); 
+            margin: 30px auto 20px auto;
         }
     }
     .card {
         margin: 20px 5px;
+        background-color: transparent;
+        border: none;
+        transition: transform .5s ease-in-out;
+        img, .card-img-overlay{
+            border-radius: 20px 0px;
+        }
         img {
-            max-height: 250px; 
+            max-height: 200px; 
             max-width:100%;
         }
         .card-img-overlay{
             background-image:linear-gradient(50deg, rgba(0, 0, 0, 0.856), rgba(0, 0, 0, 0));
-            background-size: 500%; background-position: left; transition: background-position .5s;
+            background-size: 500%; 
+            background-position: left; 
+            transition: background-position .5s;
             p{
-                font-size: 30px;
-                justify-content: center; position: relative; top:50%;
+                font-size: 25px;
+                justify-content: center; 
+                position: absolute; 
+                top:50%; right: 50%;
+                transform: translate(50%,-50%);
              }
             &:hover{
                 background-position: right;
@@ -32,7 +56,7 @@
         }
         &:hover{
             cursor: pointer;
-            animation: zoomIn ease-in-out .5s forwards;
+            transform: scale(1.04);
         } 
     }
 }
@@ -42,11 +66,11 @@
     .mainPortfolio{
         .projects-txt{
             padding: 0px;
-            #header{
-                font-size: 30px; font-weight: 600; letter-spacing: 1px;
+            .header{
+                font-size: 30px; font-weight: 600; letter-spacing: 1px; line-height: 100%;
             }
-            #paragraph{
-                padding:10px;font-size: 17px; letter-spacing: 0px; line-height: 25px;
+            .text{
+                padding:10px;font-size: 22px; letter-spacing: 1px; line-height: 25px;
             }
         }
         .card{
@@ -57,11 +81,3 @@
     }  
 }
 
-@keyframes zoomIn{
-    from {
-        transform: scale(1);
-    }
-    to {
-        transform: scale(1.05);
-    }
-}

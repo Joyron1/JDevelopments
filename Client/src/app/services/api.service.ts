@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
 import { Service } from '../Models/services.model';
 import { Portfolio } from '../Models/portfolio.model';
-import { Info } from '../Models/info.model';
+import { Newsletter } from '../Models/newsletter.model';
 import { Contact } from '../Models/contact.model';
 import { Admin } from '../Models/admin.model';
 
@@ -15,19 +15,24 @@ export class ApiService {
   globalUrl = 'https://jdevelopments.co.il/jd_server/';
   // globalUrl = 'http://localhost:5000/jd_server/';
 
+  public facebookURL = 'https://www.facebook.com/JDevelopmentsStudio';
+  public instagramURL = 'https://www.instagram.com/joy_developments/';
+  public githubURL = 'https://github.com/Joyron1';
+  public whatsappURL = 'https://api.whatsapp.com/send?phone=972505796203';
+  public linkedinURL = 'https://www.linkedin.com/in/joy-ron-61a5051a7/';
+
   public services = new BehaviorSubject<Service[]>([]);
   public projects = new BehaviorSubject<Portfolio[]>([]);
   public admin = new BehaviorSubject<Admin[]>([]);
-  public ContactInfo = new BehaviorSubject<Info[]>([]);
+  public ContactInfo = new BehaviorSubject<Newsletter[]>([]);
   public ContactMessage = new BehaviorSubject<Contact[]>([]);
   adminPathname: boolean;
 
   constructor(public http: HttpClient) {
     this.getAllServices();
     this.getAllProjects();
-    this.getAdmin();
     this.checkAdminPathname();
-    this.getAllContactInfo();
+    this.getAllNewsletter();
     this.getAllContactMessage();
   }
 
@@ -41,17 +46,19 @@ export class ApiService {
   checkAdminPathname() {
     let path = window.location.pathname;
     this.adminPathname = path.startsWith("/jd-admin");
-    console.log(this.adminPathname);
+    // console.log(this.adminPathname);
   }
 
   // GET ADMIN DETAILS //
-  getAdmin(): Promise<Admin[]> {
+
+  login(obj): Promise<Admin> {
+    // console.log("service obj:", obj)
     return new Promise(async (resolve, reject) => {
       try {
-        await this.http.get<Admin[]>(`${this.globalUrl}admin/getAdmin`).subscribe(data => {
-          if (data['status'] == 1)
-            this.admin.next(data['data']);
-          // resolve(data);
+        await this.http.post<Admin>(`${this.globalUrl}` + `admin/login`, obj).subscribe(data => {
+          if (data['status'] == 3)
+            // this.services.next(data['data']);
+            resolve(data);
         });
       } catch (err) {
         console.log(err);
@@ -75,7 +82,7 @@ export class ApiService {
   }
 
   insertService(obj): Promise<Service> {
-    console.log("service obj:", obj)
+    // console.log("service obj:", obj);
     return new Promise(async (resolve, reject) => {
       try {
         await this.http.post<Service>(`${this.globalUrl}` + `services/insertService`, obj).subscribe(data => {
@@ -90,7 +97,7 @@ export class ApiService {
   }
 
   updateService(obj): Promise<Service> {
-    console.log("service obj:", obj)
+    // console.log("service obj:", obj);
     return new Promise(async (resolve, reject) => {
       try {
         await this.http.post<Service>(`${this.globalUrl}` + `services/updateService`, obj).subscribe(data => {
@@ -107,7 +114,7 @@ export class ApiService {
 
 
   deleteService(s_id) {
-    console.log("delete service:", s_id)
+    // console.log("delete service:", s_id);
     return new Promise(async (resolve, reject) => {
       try {
         await this.http.get(`${this.globalUrl}services/deleteService?id=${s_id}`).subscribe(data => {
@@ -116,7 +123,7 @@ export class ApiService {
             console.log("data status check:", data['status']);
             // this.user.next(data['data']);
             resolve(data);
-            console.log("product deleted")
+            // console.log("product deleted");
           }
         });
       } catch (err) {
@@ -170,7 +177,7 @@ export class ApiService {
   }
 
   insertProject(obj): Promise<Portfolio> {
-    console.log("service obj:", obj)
+    // console.log("service obj:", obj);
     return new Promise(async (resolve, reject) => {
       try {
         await this.http.post<Portfolio>(`${this.globalUrl}` + `portfolio/insertProject`, obj).subscribe(data => {
@@ -186,7 +193,7 @@ export class ApiService {
   }
 
   updateProject(obj): Promise<Portfolio> {
-    console.log("service obj:", obj)
+    // console.log("service obj:", obj);
     return new Promise(async (resolve, reject) => {
       try {
         await this.http.post<Portfolio>(`${this.globalUrl}` + `portfolio/updateProject`, obj).subscribe(data => {
@@ -202,15 +209,19 @@ export class ApiService {
   }
 
 
-  deleteProject(p_id) {
-    console.log("delete project:", p_id)
+  deleteProject(p_id, token) {
+    // console.log("delete project:", p_id);
+    let obj = {
+      id: p_id,
+      token: token
+    };
     return new Promise(async (resolve, reject) => {
       try {
-        await this.http.get(`${this.globalUrl}portfolio/deleteProject?id=${p_id}`).subscribe(data => {
+        await this.http.post(`${this.globalUrl}` + `portfolio/deleteProject`, obj).subscribe(data => {
           if (data['status'] == 1) {
             // this.user.next(data['data']);
             resolve(data);
-            console.log("PROJECT DELETED")
+            // console.log("PROJECT DELETED");
           }
         });
       } catch (err) {
@@ -220,21 +231,7 @@ export class ApiService {
   }
 
 
-  //***  CONTACT  ***//
-  getAllContactInfo(): Promise<Info[]> {
-    return new Promise(async (resolve, reject) => {
-      try {
-        await this.http.get<Info[]>(`${this.globalUrl}info/getAllOptCustomers`).subscribe(data => {
-          if (data['status'] == 1)
-            this.ContactInfo.next(data['data']);
-          // resolve(data);
-        });
-      } catch (err) {
-        console.log(err);
-      }
-    });
-  }
-
+  //***  START OF CONTACT MESSAGES ***/
   getAllContactMessage(): Promise<Contact[]> {
     return new Promise(async (resolve, reject) => {
       try {
@@ -249,11 +246,68 @@ export class ApiService {
     });
   }
 
-  insertInfo(obj): Promise<Info> {
-    console.log("service obj:", obj)
+  insertContact(obj): Promise<Contact> {
+    console.log("service obj:", obj);
     return new Promise(async (resolve, reject) => {
       try {
-        await this.http.post<Info>(`${this.globalUrl}` + `info/insertInfo`, obj).subscribe(data => {
+        await this.http.post<Contact>(`${this.globalUrl}` + `contact/insertContact`, obj).subscribe(data => {
+          if (data['status'] == 1) {
+            this.ContactMessage.next(data['data']);
+            // resolve(data);
+            console.log("went our from server side");
+          }
+        });
+      } catch (err) {
+        console.log(err);
+      }
+    });
+  }
+
+  deleteContact(m_id, token): Promise<Contact> {
+    // console.log("delete project:", m_id);
+    let obj = {
+      id: m_id,
+      token: token
+    };
+    return new Promise(async (resolve, reject) => {
+      try {
+        await this.http.post<Contact>(`${this.globalUrl}` + `contact/deleteContact`, obj).subscribe(data => {
+          if (data['status'] == 1) {
+            // this.user.next(data['data']);
+            resolve(data);
+            // console.log("msg DELETED");
+          }
+        });
+      } catch (err) {
+        console.log(err);
+      }
+    });
+  }
+
+  updateRead(obj): Promise<Contact> {
+    // console.log("service obj:", obj);
+    return new Promise(async (resolve, reject) => {
+      try {
+        await this.http.post<Contact>(`${this.globalUrl}` + `contact/updateRead`, obj).subscribe(data => {
+          if (data['status'] == 1) {
+            // this.projects.next(data['data']);
+            resolve(data);
+            console.log(data)
+          }
+        });
+      } catch (err) {
+        console.log(err);
+      }
+    });
+  }
+  //***  END OF CONTACT MESSAGES ***/
+
+
+  //***  START OF NEWSLETTER INFO ***/
+  getAllNewsletter(): Promise<Newsletter[]> {
+    return new Promise(async (resolve, reject) => {
+      try {
+        await this.http.get<Newsletter[]>(`${this.globalUrl}newsletter/getAllNewsletter`).subscribe(data => {
           if (data['status'] == 1)
             this.ContactInfo.next(data['data']);
           // resolve(data);
@@ -264,13 +318,13 @@ export class ApiService {
     });
   }
 
-  insertContact(obj): Promise<Contact> {
-    console.log("service obj:", obj)
+  insertInfo(obj): Promise<Newsletter> {
+    // console.log("service obj:", obj);
     return new Promise(async (resolve, reject) => {
       try {
-        await this.http.post<Contact>(`${this.globalUrl}` + `contact/insertContact`, obj).subscribe(data => {
+        await this.http.post<Newsletter>(`${this.globalUrl}` + `newsletter/insertNewsletter`, obj).subscribe(data => {
           if (data['status'] == 1)
-            this.ContactMessage.next(data['data']);
+            this.ContactInfo.next(data['data']);
           // resolve(data);
         });
       } catch (err) {
@@ -278,6 +332,47 @@ export class ApiService {
       }
     });
   }
+
+  deleteNewsletter(n_id, token): Promise<Newsletter> {
+    // console.log("delete newsletter:", n_id, token);
+    let obj = {
+      id: n_id,
+      token: token
+    };
+    return new Promise(async (resolve, reject) => {
+      try {
+        await this.http.post<Newsletter>(`${this.globalUrl}` + `newsletter/deleteNewsletter`, obj).subscribe(data => {
+          if (data['status'] == 1) {
+            // this.user.next(data['data']);
+            resolve(data);
+            // console.log("newsletter DELETED");
+          }
+        });
+      } catch (err) {
+        console.log(err);
+      }
+    });
+  }
+
+  editNewsletter(obj): Promise<Newsletter> {
+    // console.log(obj);
+    return new Promise(async (resolve, reject) => {
+      try {
+        await this.http.post<Newsletter>(`${this.globalUrl}` + `newsletter/editNewsletter`, obj).subscribe(data => {
+          if (data['status'] == 1) {
+            // this.projects.next(data['data']);
+            resolve(data);
+            console.log(data)
+          }
+        });
+      } catch (err) {
+        console.log(err);
+      }
+    });
+  }
+  //***  END OF NEWSLETTER INFO ***/
+
+
 
 
 

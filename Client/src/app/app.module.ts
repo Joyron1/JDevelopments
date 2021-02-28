@@ -8,6 +8,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { SwiperModule } from 'swiper/angular';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -24,7 +26,9 @@ import { AdminContactInfoComponent } from './pages/admin/components/admin-contac
 import { AdminContactMessageComponent } from './pages/admin/components/admin-contact-message/admin-contact-message.component';
 import { AdminNavbarComponent } from './components/admin-navbar/admin-navbar.component';
 import { FrameworksSliderComponent } from './components/frameworks-slider/frameworks-slider.component';
-
+import { AdminMainComponent } from './pages/admin/components/admin-main/admin-main.component';
+import { PrivacyPolicyComponent } from './pages/privacy-policy/privacy-policy.component';
+import { MsgPipe } from './msg.pipe';
 
 @NgModule({
   declarations: [
@@ -44,6 +48,9 @@ import { FrameworksSliderComponent } from './components/frameworks-slider/framew
     AdminContactMessageComponent,
     AdminNavbarComponent,
     FrameworksSliderComponent,
+    AdminMainComponent,
+    PrivacyPolicyComponent,
+    MsgPipe,
   ],
 
   imports: [
@@ -53,7 +60,8 @@ import { FrameworksSliderComponent } from './components/frameworks-slider/framew
     FormsModule,
     HttpClientModule,
     MatFormFieldModule,
-    SwiperModule
+    SwiperModule,
+    FontAwesomeModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

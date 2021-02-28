@@ -2,6 +2,7 @@ const con = require('../utils/databse')
 const Portfolio = require('../models/portfolioModel')
 const sendToClient = require('../utils/returnObToClient')
 
+
 const imagemin = require('imagemin');
 const imageminJpegtran = require('imagemin-jpegtran');
 const imageminPngquant = require('imagemin-pngquant');
@@ -48,10 +49,11 @@ exports.insertProject = async (req, res, next) => {
 }
 
 exports.deleteProject = async (req, res, next) => {
-    let id = req.query.id;
+    let project = req.body;
+    console.log("project to delete:", project)
     await Portfolio.destroy({
         where: {
-            id: id
+            id: project.id
         }
     }).then(projects => {
         res.send(sendToClient(projects, null, 1));

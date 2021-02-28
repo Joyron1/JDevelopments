@@ -60,7 +60,9 @@ export class FrameworksSliderComponent implements OnInit {
       this.slidesNum = 5;
     else if (this.getWidth() < 1000 && this.getWidth() > 767)
       this.slidesNum = 4;
-    else if (this.getWidth() < 768)
+    else if (this.getWidth() < 768 && this.getWidth() > 485)
       this.slidesNum = 3;
+    else if (this.getWidth() < 485)
+      this.slidesNum = 2;
   }
 }

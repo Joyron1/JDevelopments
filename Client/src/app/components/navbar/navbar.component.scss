@@ -1,5 +1,8 @@
 .navbar{
-	// border-bottom: 2px solid rgba(6, 167, 119, 0.411);
+	// border-bottom: 5px solid rgb(6, 167, 119);
+	position: fixed;
+	top: 0;
+	width: 100%;
 	direction: rtl;
 	.navbar-nav{
 		margin: 0px 0px;
@@ -8,7 +11,7 @@
 	.nav-item{
 		list-style: none;
 		cursor: pointer;
-		margin: 0px 30px;
+		margin: 0px 35px;
 		.nav-link{
 			font-size: 20px;
 			color: white;
@@ -22,7 +25,7 @@
 
 .bg-light{
 	transition: 500ms ease;
-	background-color: rgba(0, 0, 0, 0.5) !important;
+	background-color: transparent !important;
 	
 }
 .bg-light.scrolled{
@@ -60,7 +63,7 @@ color: #eee;
 }
 
 
-@media screen and (max-width:771px){
+@media screen and (max-width:767px){
 	.navbar{
 		// height: 100%;
 		align-self: start;

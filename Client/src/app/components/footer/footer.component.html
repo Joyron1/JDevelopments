@@ -1,5 +1,39 @@
-<div class="pt-5 pb-5 footer bg-dark" *ngIf="boolPath !== true">
-    <div class="container">
+<div class="pt-4 pb-4 footer bg-dark" *ngIf="boolPath !== true">
+    <div class="row no-gutters">
+        <div class="col-12 d-flex justify-content-center">
+            <a href={{facebookURL}} target="_blank"><img class="socialMedia"
+                    src="../../../assets/images/facebook.svg"></a>
+            <a href={{instagramURL}} target="_blank"><img class="socialMedia" target="_blank"
+                    src="../../../assets/images/instagram.svg"></a>
+            <!-- <a href={{githubURL}} target="_blank" title="Github"><img class="socialMedia" target="_blank"
+                    src="../../../assets/images/github.svg"></a> -->
+            <a href={{whatsappURL}} target="_blank" title="whatapp"><img class="socialMedia"
+                    src="../../../assets/images/whatsapp.svg"></a>
+            <a href={{linkedinURL}} target="_blank" title="linkedin"><img class="socialMedia"
+                    src="../../../assets/images/linkedin.png"></a>
+        </div>
+        <div class="col-12 d-flex justify-content-center mt-4">
+            <img class="site-logo" src="../../../assets/images/JD_Logo.png">
+        </div>
+        <div class="col-12 d-flex justify-content-center mt-4 links">
+            <div>
+                <span class="m-3"><a routerLink="contact-us">יצירת קשר</a></span>
+                <span style="opacity: 0.3;">|</span>
+                <span class="m-3"><a routerLink="privacy-policy">תקנון אתר</a></span>
+            </div>
+        </div>
+    </div>
+    <div class="row no-gutters">
+        <div class="col-12 d-flex justify-content-center mt-2 copyright">
+            <p><small class="text-white-50">© כל הזכויות שמורות לסטודיו <a
+                        href={{googleSearchURL}}>JDevelopments</a></small>
+            </p>
+        </div>
+    </div>
+</div>
+
+
+<!-- <div class="container">
         <div class="row">
             <div class="col-lg-4 col-md-4 col-sm-4 location">
                 <h2 class="mt-lg-1"><b>המיקום שלנו</b></h2>
@@ -21,16 +55,16 @@
             <div class="col-lg-4 col-md-4 col-sm-4 about-company">
                 <h2><b>חפשו אותנו ברשתות</b></h2>
                 <p>
-                    <a href="https://www.facebook.com/JDevelopmentsStudio" target="_blank"><img class="socialMedia"
+                    <a href={{facebookURL}} target="_blank"><img class="socialMedia"
                             src="../../../assets/images/facebook.svg"></a>
-                    <a href="https://www.instagram.com/joy_developments/" target="_blank"><img class="socialMedia"
-                            target="_blank" src="../../../assets/images/instagram.svg"></a>
-                    <a href="https://github.com/Joyron1" target="_blank" title="Github"><img class="socialMedia"
-                            target="_blank" src="../../../assets/images/github.svg"></a>
-                    <a href="https://api.whatsapp.com/send?phone=972505796203" target="_blank" title="whatapp"><img
-                            class="socialMedia" src="../../../assets/images/whatsapp.svg"></a>
-                    <a href="https://www.linkedin.com/in/joy-ron-61a5051a7/" target="_blank" title="linkedin"><img
-                            class="socialMedia" src="../../../assets/images/linkedin.png"></a>
+                    <a href={{instagramURL}} target="_blank"><img class="socialMedia" target="_blank"
+                            src="../../../assets/images/instagram.svg"></a>
+                    <a href={{githubURL}} target="_blank" title="Github"><img class="socialMedia" target="_blank"
+                            src="../../../assets/images/github.svg"></a>
+                    <a href={{whatsappURL}} target="_blank" title="whatapp"><img class="socialMedia"
+                            src="../../../assets/images/whatsapp.svg"></a>
+                    <a href={{linkedinURL}} target="_blank" title="linkedin"><img class="socialMedia"
+                            src="../../../assets/images/linkedin.png"></a>
                 </p>
                 <div class="mr-2">
                     <img id="siteLogo" src="../../../assets/images/JD_Logo.png">
@@ -44,5 +78,4 @@
                 <p><small class="text-white-50">© 2020. כל הזכויות שמורות.</small></p>
             </div>
         </div>
-    </div>
-</div>
+    </div> -->

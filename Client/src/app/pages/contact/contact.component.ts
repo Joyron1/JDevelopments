@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 import { Contact } from 'src/app/Models/contact.model';
 import { ApiService } from 'src/app/services/api.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-contact',
@@ -14,6 +15,9 @@ export class ContactComponent implements OnInit {
   public thanksMsg: string = "";
   public obj: Contact = new Contact();
 
+  facebookURL = this.api.facebookURL;
+  instagramURL = this.api.instagramURL;
+  whatsappURL = this.api.whatsappURL;
 
   constructor(public api: ApiService, private title: Title, private meta: Meta) {
 
@@ -26,26 +30,27 @@ export class ContactComponent implements OnInit {
     this.meta.updateTag({ name: 'description', content: 'צרו איתנו קשר כבר עכשיו לתחילת אפיון מהיר וקבלת הצעת מחיר משתלמת לכל כיס !' });
   }
 
-  onSubmit() {
+  async onSubmit() {
     console.log("obj:", this.obj);
     if (this.obj.fullName && this.obj.email && this.obj.phone && this.obj.service && this.obj.message) {
-      console.log("IF")
-      this.api.insertContact(this.obj)
-      this.newMethod();
+      console.log("IF");
+      await this.api.insertContact(this.obj);
+      Swal.fire({
+        icon: 'success',
+        text: 'תודה שהשארת פרטים, ניצור איתך קשר בקרוב!',
+        showCloseButton: true,
+        confirmButtonText: 'אוקי'
+      }), console.log("msg added");
     }
     else {
-      console.log("ELSE")
-      const str = "*חובה למלא את כל השדות, אנא מלא/י את השדות הריקים בבקשה.";
-      this.fieldsMsg = str;
+      console.log("else");
+      Swal.fire({
+        icon: 'warning',
+        title: 'אופס...',
+        text: 'חובה למלא את כל השדות!',
+        confirmButtonText: 'הבנתי'
+      })
     }
-  }
-
-  private newMethod() {
-    this.fieldsMsg = "";
-    this.thanksMsg = "תודה שהשארת פרטים, הצוות שלנו יחזור אליך בקרוב!";
-    setInterval(function () {
-      window.location.reload();
-    }, 3000);
   }
 
 }

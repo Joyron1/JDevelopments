@@ -28,6 +28,10 @@ const Contact = sequelize.define('contact', {
         type: Sequelize.STRING,
         allowNull: true
     },
+    read: {
+        type: Sequelize.INTEGER(11),
+        allowNull: true
+    }
 }, {
     charset: 'utf8',
     collate: 'utf8_general_ci'

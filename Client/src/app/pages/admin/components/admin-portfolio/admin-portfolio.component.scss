@@ -1,35 +1,35 @@
 header{
     font-size: 50px;
 }
-.card img{
-    height: 250px; 
-    max-width:100%;
-}
-
-.card-img-overlay{
-    background-image:linear-gradient(50deg, rgba(0, 0, 0, 0.774), rgba(0, 0, 0, 0));
-    background-size: 500%;
-    background-position: left;
-    transition: background-position .5s;
-}
-
-.card-img-overlay:hover{
-    background-position: right;
-    p{
-        display: none;
+.card{
+    background-color: transparent;
+    border: none;
+    // img, .card-img-overlay{
+    //     border-radius: 20px 0px;
+    // }
+    img{
+        height: 250px; 
+        max-width:100%;
     }
-}
-
-.card-img-overlay p{
-   font-size: 30px;
-   justify-content: center;
-   position: relative;
-   top:50%;
-}
-
-.card:hover{
-    cursor: pointer;
-    animation: zoomIn ease-in-out .5s forwards;
+    .card-img-overlay{
+        background-image:linear-gradient(50deg, rgba(0, 0, 0, 0.774), rgba(0, 0, 0, 0));
+        background-size: 500%;
+        background-position: left;
+        transition: background-position .5s;
+        &:hover{
+            background-position: right;
+            p{
+                display: none;
+            }
+        }
+        p{
+            font-size: 30px;
+            justify-content: center;
+            position: relative;
+            top:50%;
+         }
+    }
+    
 }
 
 .admin-projects-buttons{

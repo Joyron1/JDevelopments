@@ -1,0 +1,115 @@
+.mainServices{
+    text-align: center;
+    font-family: 'Assistant', sans-serif;
+    background: -webkit-linear-gradient(top,#546e7a,#fff,#fff,#fff,#fff,#fff);
+    padding: 80px 0px 0px 0px;
+    @media screen and (max-width:767px){
+        background: white;
+        padding: 76px 0px 0px 0px;
+    }
+    .header{
+        font-size: 90px;
+        font-weight: 800;
+        padding: 30px;
+        color: rgba(163, 163, 163, 0.39);
+        background-color: #e9ecef;
+        height: auto;
+        max-width: 100%;
+        line-height: 50px;
+        @media (max-width:996px){
+            font-size: 50px;
+            letter-spacing: 0.5px;
+        }
+        @media (max-width:431px){
+            font-size: 30px;
+            padding: 10px;
+        }
+    }
+    .serviceCard{
+        display: inline;
+        text-align: center;
+        width: 100%;
+        padding: 5px;
+        /* animation: fadeIn 2s ease-in; */
+        img{
+            width:70%;
+        }
+        &:hover{
+            overflow-x: hidden;
+        }
+        .card-title{
+            font-size: 22px;
+            margin: 10px 0px 10px 0px;
+            @media (max-width:768px){
+                font-size: 20px;
+                line-height: 100%;
+            }
+        }
+        .description{
+            max-width: 400px; 
+            font-size: 18px;
+            word-spacing: 4px;
+        }
+    }
+    .lngsHeader{
+        font-size: 40px;
+        font-weight: 800;
+        padding: 30px;
+        color: rgba(163, 163, 163, 0.39);
+        background-color: #e9ecef;
+        height: auto;
+        max-width: 100%;
+        line-height: 50px;
+        @media (max-width:767px){
+            font-size: 27px;
+            line-height: 50px;
+            padding: 15px;
+        }
+        @media (max-width:431px){
+            font-size: 25px;
+        }
+        .icons{
+            display: flex;
+            text-align: center;
+        }
+        img{
+            width: 60px;
+        }
+    }
+}
+
+
+  
+
+
+/* KEY FRAMES */
+
+/* @keyframes zoomIn{
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.1);
+    }
+}
+
+@keyframes zoomOut{
+    from {
+        transform: scale(1.1);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeIn{
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+} */

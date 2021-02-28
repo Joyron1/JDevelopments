@@ -1,39 +1,55 @@
 <div class="row no-gutters">
     <div class="col-12 mt-5">
-        <header>Contact Messages Panel</header>
-        <div class="pl-5 mt-5" style="text-align: left;">
-            <p class="">In this page you can see the details of customers who want to order a specific service or might
-                have a question about it.</p>
-            <p>these people left this information for you to contact them back.</p>
+        <header>עמוד ניהול הודעות</header>
+        <div class="text">רשימת לקוחות אשר השאירו פרטים באמצעות טופס יצירת הקשר וברצונם לקבל מענה בנוגע לשאלה או בקשה
+            כלשהיא.<br>
+            ניתן לעדכן פרטים, לסמן הודעה כנקראה ולמחוק הודעות מסיבות כלשהן.</div>
+        <hr>
+        <div class="form-check form-check-inline ">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="2"
+                [(ngModel)]=msgSearch>
+            <label class="form-check-label mr-1" for="inlineRadio1">כל ההודעות</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="0"
+                [(ngModel)]=msgSearch>
+            <label class="form-check-label mr-1" for="inlineRadio2">הודעות שלא נקראו</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="1"
+                [(ngModel)]=msgSearch>
+            <label class="form-check-label mr-1" for="inlineRadio3">הודעות שנקראו</label>
         </div>
     </div>
 
-    <div class="col-12 mt-5">
-        <table class="table text-light">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Full Name</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Phone</th>
-                    <th scope="col">Service</th>
-                    <th scope="col">Message</th>
-                    <th scope="col">Date</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let user of contactMessageArray">
-                    <th scope="row">{{user.id}}</th>
-                    <td>{{user.fullName}}</td>
-                    <td>{{user.email}}</td>
-                    <td>{{user.phone}}</td>
-                    <td>{{user.service}}</td>
-                    <td>{{user.message}}</td>
-                    <td>{{user.createdAt}}</td>
-                    <td><i type="button" class="fas fa-trash"></i></td>
-                    <td><i type="button" class="fas fa-pencil-alt"></i></td>
-                </tr>
+    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 p-3" *ngFor="let user of contactMessageArray | msg : msgSearch ;">
+        <div class="card my-4 text-dark p-3" id="card-bg" style="text-align: right;"
+            [ngStyle]="user.read == 1 ? {'background-color': 'lightgreen'} : {'background-color': 'white'}">
+            <div class="edit-btns">
+                <span type="button" class="delete-btn" (click)="deleteContact(user.id)"><i
+                        class="far fa-times-circle"></i></span>
+                <span type="button" class="check-btn" (click)="markAsRead(user)"><i
+                        class="far fa-check-circle"></i></span>
+                <!-- <span type="button" class="edit-btn" (click)="editContact(user)">
+                    <fa-icon [icon]="faEdit"></fa-icon>
+                </span> -->
+            </div>
+            <hr class="mb-0">
+            <div class="user-info mt-2">
+                <div><span id="user-name">שם מלא:</span>{{user.fullName}}</div>
+                <div><span id="user-phone">מספר נייד:</span>{{user.phone}}</div>
+                <div><span id="user-sub">סיבת פנייה:</span>{{user.service}}</div>
+                <div><span id="user-msg">הודעת לקוח:</span>{{user.message}}</div>
+            </div>
+            <hr class="mb-0">
+            <div class="row no-gutters mt-2 user-social">
+                <a href='https://api.whatsapp.com/send?phone={{user.phone}}'><img
+                        src="../../../../../assets/images/social/whatsapp.png" /></a>
+                <a href='mailto:{{user.email}}'><img src="../../../../../assets/images/social/envelope.png" /></a>
 
-        </table>
+            </div>
+        </div>
+
     </div>
+
 </div>

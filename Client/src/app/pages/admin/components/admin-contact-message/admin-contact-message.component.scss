@@ -1,0 +1,52 @@
+header{
+    font-size: 50px;
+}
+.text{
+    // text-align: right;
+    margin: 20px 0px;
+    padding: 10px 30px;
+    font-size: 25px;
+    line-height: 100%;
+    letter-spacing: 0.5px;
+    @media (max-width:768px) {
+        font-size: 20px;
+    }
+}
+.form-check-label{
+    font-size: 20px;
+}
+.card{
+    .edit-btns{
+        .delete-btn,.check-btn,.edit-btn{
+            float: left; 
+            font-size: 30px;
+            transition: transform .3s;
+            &:hover{
+                transform: scale(1.1);
+            }
+        }
+        .check-btn,.edit-btn{
+            margin-left: 20px;
+        }
+    }
+    .user-info{
+        font-size: 18px;
+        #user-name,#user-phone,#user-sub,#user-msg{
+            font-size: 22px;
+            text-decoration: underline;
+            margin-left: 10px;
+        }
+    }
+    .user-social{
+        a{
+            margin: 0px 5px;
+            img{
+                width: 50px;
+                transition: transform .3s ;
+                &:hover{
+                    transform: scale(1.1);
+                }
+            }
+        }
+    }
+}

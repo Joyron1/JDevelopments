@@ -19,7 +19,7 @@ const server = http.createServer(app);
 
 const Services = require('./models/servicesModel');
 const Portfolio = require('./models/portfolioModel');
-const Info = require('./models/infoModel');
+const Newsletter = require('./models/newsletterModel');
 const Contact = require('./models/contactModel');
 const Admin = require('./models/adminModel');
 
@@ -41,8 +41,8 @@ app.use("/jd_server/services", servicesRoute);
 const portfolioRoute = require('./routes/portfolioRoute');
 app.use("/jd_server/portfolio", portfolioRoute);
 
-const infoRoute = require('./routes/infoRoute');
-app.use("/jd_server/info", infoRoute);
+const newsletterRoute = require('./routes/newsletterRoute');
+app.use("/jd_server/newsletter", newsletterRoute);
 
 const contactRoute = require('./routes/contactRoute');
 app.use("/jd_server/contact", contactRoute);

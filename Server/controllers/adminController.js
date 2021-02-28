@@ -1,13 +1,39 @@
 const con = require('../utils/databse')
 const Admin = require('../models/adminModel')
 const sendToClient = require('../utils/returnObToClient')
+const jwt = require('jsonwebtoken');
 
-const fs = require('fs');
+// exports.getAdmin = async (req, res, next) => {
+//     await Admin.findAll().then(result => {
+//         res.send(sendToClient(result, null, 1));
+//         console.log("result:", result)
+//     }).catch(err => {
+//         res.send(sendToClient(null, err, 0))
+//     })
+// }
 
-exports.getAdmin = async (req, res, next) => {
-    await Admin.findAll().then(result => {
-        res.send(sendToClient(result, null, 1));
-        console.log("result:", result)
+exports.login = async (req, res, next) => {
+    let admin = req.body;
+    await Admin.findOne({
+        where: {
+            email: admin.email,
+            password: admin.password
+        }
+    }).then(result => {
+        const token = jwt.sign(
+            {
+                email: result.email,
+                userId: result.id
+            },
+            "joyron",
+            {
+                expiresIn: "1h"
+            }
+        );
+        result.dataValues['token'] = token;
+        // console.log("existed user is:", result, "token is:", token)
+        res.json(sendToClient(result, null, 3));
+        // console.log("result is:", result)
     }).catch(err => {
         res.send(sendToClient(null, err, 0))
     })

@@ -50,10 +50,6 @@ export class NavbarComponent implements OnInit {
       document.getElementById('nav-btn').click();
   }
 
-  checkAdminPathname() {
-    let path = window.location.pathname;
-    this.boolPath = path.startsWith("/admin");
-    console.log(this.boolPath)
-  }
+
 
 }

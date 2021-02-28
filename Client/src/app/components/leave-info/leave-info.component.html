@@ -1,37 +1,38 @@
 <div class="row" id="leaveInfoForm" *ngIf="this.formIsFilled==false">
     <div class="col-xl-12 col-md-12 col-sm-12 leaveInfoTxt">
         <div>
-            <p>בואו לקדם ולהנגיש את העסק שלכם לעוד אלפי לקוחות!</p>
+            <p>מעוניינים להתחיל בפרוייקט משלכם?</p>
         </div>
         <div>
-            <p>השאירו פרטים לייעוץ ראשוני וקבלת הצעת מחיר.</p>
+            <p>השאירו פרטים לייעוץ ראשוני חינם ללא התחייבות.</p>
         </div>
     </div>
 
-    <div class="col-xl-4 col-md-4 col-sm-12">
+    <div class="col-xl-6 col-md-6 col-sm-6">
         <div class="form-group ">
-            <input type="text" class="form-control" id="fullName" placeholder="שם מלא*" [(ngModel)]="obj.fullName">
+            <input type="text" class="form-control" id="fullName" placeholder="*שם מלא" [(ngModel)]="obj.fullName">
         </div>
     </div>
 
-    <div class="col-xl-4 col-md-4 col-sm-12">
+    <div class="col-xl-6 col-md-6 col-sm-6">
         <div class="form-group ">
-            <input type="tel" class="form-control" id="phone" placeholder='מספר נייד*' [(ngModel)]="obj.phone">
+            <input type="tel" class="form-control" id="phone" placeholder='*מספר נייד' [(ngModel)]="obj.phone">
         </div>
     </div>
 
-    <div class="col-xl-4 col-md-4 col-sm-12">
+    <div class="col-xl-8 col-md-8 col-sm-8">
         <div class="form-group ">
-            <input type="email" class="form-control" id="email" placeholder="כתובת אימייל*" [(ngModel)]="obj.email">
+            <input type="email" class="form-control" id="email" placeholder="*כתובת אימייל" [(ngModel)]="obj.email">
         </div>
+    </div>
+
+
+    <div class="col-xl-4 col-md-4 col-sm-4">
+        <button type="button" class="btn submit-btn" (click)="onSubmit()">שלח/י</button>
     </div>
 
     <div class="col-12 text-light" style="text-align: center; direction: rtl;">
         <p class="mt-">{{fieldsMsg}}</p>
-    </div>
-
-    <div class="col-xl-12 col-md-12 col-sm-12" style="text-align:center;">
-        <button type="button" class="btn btn-outline-warning" style="width:100px;" (click)="onSubmit()">שלח/י</button>
     </div>
 
 </div>

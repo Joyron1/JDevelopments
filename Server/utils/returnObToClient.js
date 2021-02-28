@@ -15,21 +15,22 @@ const alertMSG = (result, error, status) => {
             data: result
         }
     }
-    // else if (status == 2) {
-    //     return {
-    //         status: status,
-    //         message: "מייל קיים במערכת",
-    //         error: error,
-    //         data: null
-    //     }
-    // } else if (status == 3) {
-    //     return {
-    //         status: status,
-    //         message: "משתמש קיים במערכת",
-    //         error: error,
-    //         data: result
-    //     }
-    // }
+    else if (status == 2) {
+        return {
+            status: status,
+            message: "מייל קיים במערכת",
+            error: error,
+            data: null
+        }
+    }
+    else if (status == 3) {
+        return {
+            status: status,
+            message: "משתמש קיים במערכת",
+            error: error,
+            data: result
+        }
+    }
 
 }
 

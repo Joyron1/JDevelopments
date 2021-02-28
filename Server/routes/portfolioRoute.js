@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const portfolioController = require('../controllers/portfolioController')
+const portfolioController = require('../controllers/portfolioController');
+const checkAuth = require('../middleware/check-auth');
+
 var multer = require('multer');
 
 var storage = multer.diskStorage({
@@ -20,9 +22,9 @@ var upload = multer({ storage: storage });
 
 router.get('/getAllProjects', portfolioController.getAllProjects);
 router.get('/getProjectById', portfolioController.getProjectById);
-router.post('/insertProject', upload.array('uploads[]', 12), portfolioController.insertProject);
-router.post('/updateProject', upload.array('uploads[]', 12), portfolioController.updateProject);
-router.get('/deleteProject', portfolioController.deleteProject);
+router.post('/insertProject', upload.array('uploads[]', 12), checkAuth, portfolioController.insertProject);
+router.post('/updateProject', upload.array('uploads[]', 12), checkAuth, portfolioController.updateProject);
+router.post('/deleteProject', checkAuth, portfolioController.deleteProject);
 
 module.exports = router;
 

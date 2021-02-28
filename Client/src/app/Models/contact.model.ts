@@ -5,4 +5,5 @@ export class Contact {
     phone: string;
     service: string;
     message: string;
+    read: number;
 }

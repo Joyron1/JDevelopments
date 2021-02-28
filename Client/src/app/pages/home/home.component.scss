@@ -1,6 +1,6 @@
 #opener{
     background:linear-gradient(-180deg, rgba(0, 0, 0, 0.5), rgba(10, 218, 156, 0.2));
-    // background-color: ;
+    background-size: cover;
     width:auto;
     min-height: 100vh;
     justify-content: center;
@@ -26,7 +26,8 @@
         }
         #secondSntc{
             font-size: 37px;
-            letter-spacing: 20px;
+            letter-spacing: 19px;
+            font-weight: bold;
         }
         .quotation-btn,.about-btn{
             text-align: center;
@@ -69,6 +70,13 @@
     padding: 30px;
     text-align: center;
     justify-content: center;
+    position: relative;
+    #particles-js{
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+    }
 }
 
 
@@ -114,11 +122,8 @@
 
 @media (max-width: 767px) {
     #opener{
-        // background:linear-gradient(to bottom, rgba(0, 0, 0, 0.603), rgba(0, 0, 0, 0.5)) ,url('../../../assets/images/phoneBg_2.jpg');
-        // background-size: 767px;
-        // background-position: center;
-        // background-repeat: no-repeat;
-        // background-size: cover;
+        background:linear-gradient(-180deg, rgba(0, 0, 0, 0.616), rgba(10, 218, 156, 0.2)), url('../../../assets/images/test-videobg.jpg');
+        background-position: center;
         .text{
             color: white;
             text-align: center;
@@ -154,12 +159,7 @@
             }
         }
         .videoBG{
-            min-width: 100%;
-            height: 100%;
-            position: fixed;
-            top: 0;
-            left: -600px;
-            z-index: -1;
+            display: none;
         }
     }
 }

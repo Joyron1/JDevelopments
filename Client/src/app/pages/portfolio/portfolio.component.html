@@ -1,18 +1,16 @@
-<div class="row no-gutters mainPortfolio">
+<section class="row no-gutters mainPortfolio">
 
-    <div class="col-12 mt-5 projects-txt">
-        <h1 id="header">הפרויקטים שלנו, הם הפנים החדשות שלכם!</h1>
-        <hr style="width:300px; background-color:black; margin: 30px auto;">
-        <div id="paragraph">
+    <div class="col-12 projects-txt">
+        <div class="header">הפרויקטים שלנו, הם הפנים החדשות שלכם!</div>
+        <hr>
+        <div class="text">
             כל פרויקט מקבל יחס אישי ומקצועי מהצוות שלנו, על מנת להגיע לרמות הכי גבוהות שאפשר! <br>
-            הסטודיו שלנו מתמקצע בבניית אתרים ועמודי נחיתה ובנוסף מספק שירותים של פיתוח מערכות ופרויקטים גדולים מבוססי צד
-            שרת ומאגרי מידע.<br>
             אתם יותר ממוזמנים לצפות בפרויקטים שלנו ולהתרשם!
         </div>
     </div>
 
     <div class="col-12 mb-5">
-        <div class="row pr-5 pl-5">
+        <div class="row pr-3 pl-3">
             <div class="col-xl-4 col-md-6 col-sm-6" *ngFor="let project of projectsArray">
                 <div class="card">
                     <a href="{{project.url}}" target="_blank">
@@ -26,4 +24,4 @@
         </div>
     </div>
 
-</div>
+</section>

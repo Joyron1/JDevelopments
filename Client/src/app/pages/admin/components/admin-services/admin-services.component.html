@@ -6,7 +6,7 @@
             <i class="fas fa-plus-circle"></i>
         </p>
     </div>
-    <div class="col-xl-4 col-lg-6 col-md-6 col- p-3 serviceCard my-5" *ngFor="let adminService of adminServicesArray">
+    <div class="col-xl-4 col-lg-6 col-md-6 col- p-3 serviceCard my-2" *ngFor="let adminService of adminServicesArray">
         <img src="{{globalUrl}}{{adminService.img}}">
         <h5 class="card-title my-2">{{adminService.title}}</h5>
         <div class="container description my-3">
@@ -15,10 +15,10 @@
 
         <div class="admin-services-buttons">
             <div type="button" id="del-project" class="btn btn-danger" (click)="deleteService(adminService.id)">
-                DELETE <i class="fas fa-trash"></i> </div>
+                מחיקה <i class="fas fa-trash"></i> </div>
             <div type="button" id="edit-project" class="btn btn-success" data-toggle="modal" data-target="#updateModal"
                 (click)=getServiceById(adminService.id)>
-                EDIT <i class="fas fa-pencil-alt"></i>
+                עידכון <i class="fas fa-pencil-alt"></i>
             </div>
         </div>
 

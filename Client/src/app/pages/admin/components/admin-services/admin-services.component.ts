@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Service } from 'src/app/Models/services.model';
 import { ApiService } from 'src/app/services/api.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-admin-services',
@@ -58,11 +59,20 @@ export class AdminServicesComponent implements OnInit {
   }
 
   async insertService() {
+
     if (!this.title || !this.description || !this.addImageFile) {
-      this.addMsg = "עליך למלא את כל השדות בטופס!"
+      Swal.fire({
+        icon: 'error',
+        text: 'עליך למלא את כל השדות בטופס!',
+        showCloseButton: true,
+        confirmButtonText: 'אוקי',
+        timer: 3000,
+        timerProgressBar: true,
+      });
     }
+
     else {
-      console.log("else")
+      // console.log("else");
       this.formData = new FormData();
       this.formData.append('title', this.title);
       this.formData.append('description', this.description);
@@ -74,17 +84,18 @@ export class AdminServicesComponent implements OnInit {
           this.addImageFile[i]['name']
         );
       }
-      console.log("formdata:" + this.formData)
+      // console.log("formdata:" + this.formData);
       let result = await this.api.insertService(this.formData);
-      console.log("The New Project Is :", result)
-      if (result['status'] === 1) {
-        this.addMsg = "הפרויקט התווסף בהצלחה!"
-        this.title = ""; this.description = ""; this.addMsg = "";
-        this.addImageFile = [];
-        console.log(this.title, this.description, this.addMsg, this.addImageFile);
-        setTimeout(function () { document.getElementById('closeAddModal').click(); }, 1500);
-        this.api.getAllServices();
-      }
+      // console.log("The New Project Is :", result);
+      result['status'] == 1 && Swal.fire({
+        icon: 'success',
+        text: 'השירות התווסף בהצלחה!',
+        showCloseButton: true,
+        confirmButtonText: 'אוקי',
+        timer: 3000,
+        timerProgressBar: true,
+      }), this.title = ""; this.description = ""; this.addMsg = ""; this.addImageFile = [];
+      this.api.getAllServices();
     }
   }
 
@@ -92,7 +103,7 @@ export class AdminServicesComponent implements OnInit {
     if (id) {
       let test = await this.api.getServiceById(id);
       this.selectedServcie = test['data'];
-      console.log("selected product:", this.selectedServcie[0]);
+      // console.log("selected product:", this.selectedServcie[0]);
       this.id = this.selectedServcie[0]['id']; this.title = this.selectedServcie[0]['title'];
       this.description = this.selectedServcie[0]['description'];
     }
@@ -105,7 +116,7 @@ export class AdminServicesComponent implements OnInit {
     this.formData.append('title', this.title);
     this.formData.append('description', this.description);
 
-    console.log("edited picture:", this.updateImageFile)
+    // console.log("edited picture:", this.updateImageFile);
     if (this.updateImageFile) {
       for (let i = 0; i < this.updateImageFile.length; i++) {
         this.formData.append(
@@ -116,16 +127,18 @@ export class AdminServicesComponent implements OnInit {
       }
     }
 
-    console.log("formdata:", this.formData)
+    // console.log("formdata:", this.formData);
     let result = await this.api.updateService(this.formData);
-    console.log("The Updated Service Is :", result)
-    if (result['status'] === 1) {
-      this.updateMsg = "השירות עודכן בהצלחה!";
-      this.updateImageFile = [];
-      this.title = ""; this.description = ""; this.updateMsg = "";
-      setTimeout(function () { document.getElementById('closeUpdateModal').click(); }, 1500);
-      this.api.getAllServices();
-    }
+    // console.log("The Updated Service Is :", result);
+    result['status'] == 1 && Swal.fire({
+      icon: 'success',
+      text: 'השירות עודכן בהצלחה!',
+      showCloseButton: true,
+      confirmButtonText: 'אוקי',
+      timer: 3000,
+      timerProgressBar: true,
+    }), this.updateImageFile = []; this.title = ""; this.description = ""; this.updateMsg = "";
+    this.api.getAllServices();
   }
 
 
@@ -135,10 +148,10 @@ export class AdminServicesComponent implements OnInit {
   }
 
   async deleteService(s_id) {
-    console.log("here 1");
-    console.log("s_id to delete:", s_id)
+    // console.log("here 1");
+    // console.log("s_id to delete:", s_id);
     let removed = this.api.deleteService(s_id);
-    console.log("here 2")
+    // console.log("here 2");
     await this.api.getAllServices();
   }
 

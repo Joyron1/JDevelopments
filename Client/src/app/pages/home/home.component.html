@@ -9,14 +9,20 @@
         <button type="button" class="btn quotation-btn" routerLink="/contact-us">לקבלת הצעת מחיר</button>
         <button type="button" class="btn about-btn" (click)="scrollToAboutUs()">קצת עלינו</button>
     </div>
-    <video autoplay muted loop class="videoBG">
+    <video class="videoBG" autoplay muted loop>
         <source src="../../../assets/videos/video1.mp4" type="video/mp4" name="בניית אתרים" />
     </video>
 </div>
 
 <div class="row no-gutters bg-dark leaveInfoMain">
-    <app-leave-info></app-leave-info>
+    <div id="particles-js"></div>
+    <app-leave-info>
+
+    </app-leave-info>
+
 </div>
 
-<div id="about-us-scroll"></div>
-<app-about></app-about>
+<div class="">
+    <div id="about-us-scroll"></div>
+    <app-about></app-about>
+</div>

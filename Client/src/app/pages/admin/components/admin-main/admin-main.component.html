@@ -1,0 +1,59 @@
+<div class="bg-dark">
+
+    <section class="py-5 text-light">
+        <div class="header">ברוך הבא לפאנל ניהול האתר</div>
+    </section>
+
+    <section class="information row no-gutters container-fluid">
+
+        <div class="card my-4">
+            <div class="card-body">
+                <fa-icon [icon]="faCode"></fa-icon>
+                <div class="card-title">
+                    <div class="amount">{{projectsArray.length}}</div>
+                    <div class="title">פרויקטים</div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <a routerLink="/jd-admin/projects-page" class="card-link float-left text-white">
+                    למידע נוסף
+                    <fa-icon [icon]="faArrowLeft" class="mr-2"></fa-icon>
+                </a>
+            </div>
+        </div>
+
+        <div class="card my-4">
+            <div class="card-body">
+                <fa-icon [icon]="faMobileAlt"></fa-icon>
+                <div class="card-title">
+                    <div class="amount">{{contactMessageArray.length}}</div>
+                    <div class="title">הודעות במערכת</div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <a routerLink="/jd-admin/contact-page" class="card-link float-left text-white">
+                    למידע נוסף
+                    <fa-icon [icon]="faArrowLeft" class="mr-2"></fa-icon>
+                </a>
+            </div>
+        </div>
+
+        <div class="card my-4">
+            <div class="card-body">
+                <fa-icon [icon]="faEnvelopeSquare"></fa-icon>
+                <div class="card-title">
+                    <div class="amount">{{contactInfoArray.length}}</div>
+                    <div class="title">רשומים לניוזלטר</div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <a routerLink="/jd-admin/newsletter-page" class="card-link float-left text-white">
+                    למידע נוסף
+                    <fa-icon [icon]="faArrowLeft" class="mr-2"></fa-icon>
+                </a>
+            </div>
+        </div>
+
+    </section>
+
+</div>

@@ -1,0 +1,28 @@
+.main-privacy-policy{
+    text-align: right;
+    padding: 100px;
+    color: white;
+    background: -webkit-linear-gradient(left,#546e7a,#78909c);
+    @media screen and(max-width:768px){
+        padding: 100px 40px;
+    }
+    @media screen and(max-width:450px){
+        padding: 100px 20px;
+    }
+    .header{
+        font-size: 50px;
+        font-weight: bold;
+        letter-spacing: 2px;
+    }
+    h3{
+        font-size: 20px;
+        margin: 50px 0px 20px 0px;
+    }
+    ul{
+        padding: 0;
+        list-style-type: none;
+    }
+    a{
+        color: white;
+    }
+}

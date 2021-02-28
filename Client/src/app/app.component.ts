@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import * as $ from "jquery";
+import { CanonicalService } from './shared/canonical.service';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
@@ -29,11 +29,12 @@ export class AppComponent {
 
   isFadeIn = false;
 
-  constructor() {
+  constructor(private canonicalService: CanonicalService) {
 
   }
 
   ngOnInit(): void {
+    this.canonicalService.setCanonicalURL();
 
     window.addEventListener('scroll', () => {
       let scrollY = window.scrollY;

@@ -11,7 +11,7 @@
     <div class="col-xl-4 col-lg-6 col-md-6 col- p-3" *ngFor="let adminProject of adminProjectsArray">
         <div class="card my-4">
             <a href="{{adminProject.url}}" target="_blank">
-                <img src="{{globalUrl}}{{adminProject.pc_img}}" class="card-img" alt="...">
+                <img src="{{globalUrl}}{{adminProject.pc_img}}" alt="...">
                 <div class="card-img-overlay text-white">
                     <p class="card-title">{{adminProject.title}}</p>
                 </div>
@@ -19,10 +19,10 @@
         </div>
         <div class="admin-projects-buttons">
             <div type="button" id="del-project" class="btn btn-danger" (click)="deleteProject(adminProject.id)">
-                DELETE <i class="fas fa-trash"></i> </div>
+                מחיקה <i class="fas fa-trash"></i> </div>
             <div type="button" id="edit-project" class="btn btn-success" data-toggle="modal" data-target="#updateModal"
                 (click)=getProjectById(adminProject.id)>
-                EDIT <i class="fas fa-pencil-alt"></i>
+                עידכון <i class="fas fa-pencil-alt"></i>
             </div>
         </div>
     </div>

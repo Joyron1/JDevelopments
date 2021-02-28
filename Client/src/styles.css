@@ -1,5 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~swiper/swiper-bundle";
 
-html, body { height: 100%; font-family: 'Assistant',sans-serif; }
-body { margin: 0; font-family: 'Assistant', sans-serif; }
+html, body { height: 100%; font-family: 'Assistant',sans-serif;  }
+body { margin: 0; font-family: 'Assistant', sans-serif; overflow-y: scroll; scroll-behavior: smooth;}
+.swal2-popup{direction: rtl;}
+.swal2-timer-progress-bar{
+    background:rgb(0, 197, 99) !important;
+    height: 5px !important;
+}

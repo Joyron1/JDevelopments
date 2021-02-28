@@ -1,4 +1,4 @@
-<div *ngIf="!adminLoggedIn">
+<div *ngIf="loggedAdminToken">
     <div class="row no-gutters adminLogin">
         <div class="col-12 login-card">
             <div class="form-row bg-dark">
@@ -24,12 +24,12 @@
     </div>
 </div>
 
-<div *ngIf="adminLoggedIn">
+<div *ngIf="!loggedAdminToken">
     <div>
         <app-admin-navbar></app-admin-navbar>
     </div>
 
-    <div class="row no-gutters adminPannel">
+    <div class="row no-gutters adminPannel bg-dark text-light">
         <div class="col-12 informationArea" style="text-align: center;">
             <router-outlet></router-outlet>
         </div>
